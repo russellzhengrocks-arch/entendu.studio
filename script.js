@@ -177,6 +177,26 @@ function setupReleaseModal() {
     releaseCloseControls.forEach((control) => control.addEventListener("click", closeReleaseModal));
 }
 
+function trackSiteEvent(name, props = {}) {
+    if (typeof window.plausible === "function") {
+        window.plausible(name, { props });
+    }
+    if (typeof window.umami === "object" && typeof window.umami.track === "function") {
+        window.umami.track(name, props);
+    }
+}
+
+function setupTrackedEvents() {
+    document.querySelectorAll("[data-track-event]").forEach((element) => {
+        element.addEventListener("click", () => {
+            trackSiteEvent(element.dataset.trackEvent, {
+                href: element.getAttribute("href") || "",
+                label: element.textContent.trim().replace(/\s+/g, " ")
+            });
+        });
+    });
+}
+
 function parsePlaygroundData() {
     if (!playgroundDataElement) return null;
 
@@ -839,6 +859,7 @@ updateWorkflowBackdrop();
 setupReveal();
 setupIntroModal();
 setupReleaseModal();
+setupTrackedEvents();
 setupDemoVideo();
 setupAiGlow();
 setupAiPoweredSound();
