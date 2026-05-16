@@ -1,0 +1,102 @@
+{
+  "language": "Malayalam",
+  "code": "ml",
+  "sourceLanguage": "en",
+  "title": "MJ feature Prowebsite",
+  "video": "assets/playground/mj-feature-sample.mp4",
+  "cues": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 1.2984022275527245,
+      "source": "BEFORE HE WAS AN ICON",
+      "translation": "അദ്ദേഹം ഒരു ഐക്കണാകും മുമ്പ്",
+      "type": "ost",
+      "positioning": {
+        "mode": "grid",
+        "column": 1,
+        "row": 0
+      }
+    },
+    {
+      "index": 2,
+      "start": 1.28,
+      "end": 2.477,
+      "source": "What's the plan?",
+      "translation": "എന്താണ് പ്ലാൻ?",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 3,
+      "start": 2.56,
+      "end": 5.642,
+      "source": "We build a shoe line around just him.",
+      "translation": "അയാളെ മാത്രം\nകേന്ദ്രീകരിച്ച് ഒരു ഷൂ ലൈൻ ഉണ്ടാക്കും.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 4,
+      "start": 5.391197916666667,
+      "end": 6.605448637763622,
+      "source": "BEFORE THEY CHANGED THE GAME",
+      "translation": "അവർ കളി മാറ്റിമറിക്കും മുമ്പ്",
+      "type": "ost",
+      "positioning": {
+        "row": 0,
+        "mode": "grid",
+        "column": 1
+      }
+    },
+    {
+      "index": 5,
+      "start": 6.6530000000000005,
+      "end": 9.197,
+      "source": "I need the greatest basketball\nshoe that's ever been made.",
+      "translation": "ഇതുവരെ നിര്‍മ്മിച്ചതില്‍\nഏറ്റവും മികച്ച ബാസ്‌ക്കറ്റ്ബോള്‍ ഷൂ വേണം.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 6,
+      "start": 9.28,
+      "end": 10.442,
+      "source": "Who's the player?",
+      "translation": "ഏതു കളിക്കാരനാണ്?",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 7,
+      "start": 11.237,
+      "end": 12.237,
+      "source": "Michael Jordan.",
+      "translation": "മൈക്കിള്‍ ജോര്‍ഡന്‍.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 8,
+      "start": 12.32,
+      "end": 13.802,
+      "source": "You'll motor in.",
+      "translation": "നീ വണ്ടിയോടിച്ച് അകത്തേക്ക് കയറും.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 9,
+      "start": 13.72453125,
+      "end": 14.511927083333333,
+      "source": "NIKENN NIKEMN",
+      "translation": "നൈക്കിന്‍",
+      "type": "ost",
+      "positioning": {
+        "mode": "grid",
+        "column": 1,
+        "row": 0
+      }
+    }
+  ]
+}

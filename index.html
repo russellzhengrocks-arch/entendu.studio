@@ -1,0 +1,5331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entendu. - Broadcast subtitle localization for macOS</title>
+    <meta name="description" content="entendu. is a native macOS workbench for captioning, subtitle localization, QA, timeline repair, and professional subtitle export.">
+    <link rel="stylesheet" href="styles.css?v=20260516-scrollscrub16">
+</head>
+<body>
+    <header class="site-nav" data-nav>
+        <a class="brand" href="#top" aria-label="entendu. home">
+            <img class="brand-icon" src="assets/app-icon-512.png" alt="" aria-hidden="true">
+            <span>entendu.</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#features">Features</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#download">Download</a>
+        </nav>
+        <a class="nav-cta" href="#download">Download</a>
+    </header>
+
+    <main id="top">
+        <section class="demo-hero" id="features" aria-labelledby="hero-title">
+            <div class="demo-shell" data-reveal>
+                <h1 id="hero-title">Subtitles, <em>understood</em>.</h1>
+                <div class="demo-player" aria-label="Silent product demo video with live subtitles">
+                    <video class="demo-video" src="assets/demo18.mov" autoplay muted loop playsinline preload="metadata"></video>
+                    <div class="demo-video-shade" aria-hidden="true"></div>
+                    <div class="demo-timecode" data-demo-timecode>00:04:17:12</div>
+                    <div class="demo-caption">
+                        <span data-demo-caption>诊察番号十八番の方はい</span><span class="caption-caret" aria-hidden="true"></span>
+                    </div>
+                    <div class="demo-playing">playing</div>
+                </div>
+                <div class="demo-capabilities" aria-label="Core capabilities">
+                    <span>caption</span>
+                    <span>translate</span>
+                    <span>review</span>
+                    <span>repair</span>
+                    <span>export</span>
+                </div>
+                <div class="ai-powered-wrap" data-ai-powered aria-label="AI Powered">
+                    <div class="ai-powered-badge">
+                        <video class="ai-powered-video" src="assets/ai-powered.mp4" autoplay muted loop playsinline preload="auto"></video>
+                    </div>
+                    <audio src="assets/neon.mp3" preload="auto" data-ai-powered-sound></audio>
+                </div>
+            </div>
+        </section>
+
+        <section class="playground-section" id="workflow" aria-labelledby="playground-title" data-playground>
+            <div class="playground-heading" data-reveal>
+                <p class="eyebrow">Workflow</p>
+                <h2 id="playground-title">
+                    See the <button class="intro-link" type="button" data-intro-open>intro</button> or <span>try it yourself.</span>
+                </h2>
+            </div>
+            <div class="playground-app is-awaiting-language" data-reveal>
+                <div class="playground-toolbar">
+                    <div class="traffic-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span data-playground-status>Ready for sample</span>
+                    <div class="language-nudge" aria-hidden="true">
+                        <span>choose target</span>
+                        <i></i>
+                    </div>
+                    <label class="language-select">
+                        <span>Target language</span>
+                        <select data-playground-language>
+                            <option value="af">Afrikaans</option>
+                            <option value="ar">Arabic</option>
+                            <option value="eu">Basque</option>
+                            <option value="bn">Bengali</option>
+                            <option value="bg">Bulgarian</option>
+                            <option value="ca">Catalan</option>
+                            <option value="zh-Hans">Chinese Simplified</option>
+                            <option value="zh-Hant">Chinese Traditional</option>
+                            <option value="hr">Croatian</option>
+                            <option value="cs">Czech</option>
+                            <option value="da">Danish</option>
+                            <option value="nl">Dutch</option>
+                            <option value="fil">Filipino</option>
+                            <option value="fi">Finnish</option>
+                            <option value="fr-FR">French (France)</option>
+                            <option value="gl">Galician</option>
+                            <option value="de">German</option>
+                            <option value="el">Greek</option>
+                            <option value="he">Hebrew</option>
+                            <option value="hi">Hindi</option>
+                            <option value="hu">Hungarian</option>
+                            <option value="is">Icelandic</option>
+                            <option value="id">Indonesian</option>
+                            <option value="ga">Irish</option>
+                            <option value="it">Italian</option>
+                            <option value="ja">Japanese</option>
+                            <option value="kn">Kannada</option>
+                            <option value="ko">Korean</option>
+                            <option value="ms">Malay</option>
+                            <option value="ml">Malayalam</option>
+                            <option value="mr">Marathi</option>
+                            <option value="se">Northern Sami</option>
+                            <option value="no">Norwegian</option>
+                            <option value="pl">Polish</option>
+                            <option value="pt-PT">Portuguese (Portugal)</option>
+                            <option value="ro">Romanian</option>
+                            <option value="ru">Russian</option>
+                            <option value="sr">Serbian</option>
+                            <option value="sk">Slovak</option>
+                            <option value="es">Spanish</option>
+                            <option value="sv">Swedish</option>
+                            <option value="ta">Tamil</option>
+                            <option value="te">Telugu</option>
+                            <option value="th">Thai</option>
+                            <option value="tr">Turkish</option>
+                            <option value="uk">Ukrainian</option>
+                            <option value="vi">Vietnamese</option>
+                            <option value="cy">Welsh</option>
+                            <option value="zu">Zulu</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="playground-intake" data-playground-intake>
+                    <aside class="sample-bin" aria-label="Sample movie file">
+                        <div class="sample-folder-frame">
+                            <button class="sample-file" type="button" draggable="true" data-playground-file>
+                                <span class="sample-thumb">
+                                    <img src="assets/playground/mj-feature-thumb.jpg" alt="" aria-hidden="true">
+                                    <b>MOV</b>
+                                </span>
+                                <span class="sample-file-name">MJ feature_Prowebsite.mov</span>
+                            </button>
+                        </div>
+                    </aside>
+                    <div class="playground-import-guide" aria-hidden="true">
+                        <span>Drag movie to start</span>
+                        <i></i>
+                    </div>
+                    <div class="playground-import-stage">
+                        <div class="playground-empty-brand">entendu.</div>
+                        <button class="playground-dropzone" type="button" data-playground-start>
+                            <span>drop video / sub</span>
+                            <small>drop here to start</small>
+                        </button>
+                    </div>
+                </div>
+                <div class="playground-workbench" data-playground-workbench hidden>
+                    <div class="playground-media">
+                        <div class="sample-video-frame">
+                            <video data-playground-video src="assets/playground/mj-feature-sample.mp4" muted playsinline preload="metadata"></video>
+                            <button class="sample-mute" type="button" data-playground-mute aria-label="Unmute sample video">
+                                <span aria-hidden="true"></span>
+                                <b>Muted</b>
+                            </button>
+                            <div class="sample-caption" data-playground-caption></div>
+                        </div>
+                        <div class="sample-controls">
+                            <button type="button" data-playground-play>Play</button>
+                            <div class="sample-progress" aria-hidden="true"><span data-playground-progress></span></div>
+                            <time data-playground-time>00:00:00</time>
+                        </div>
+                    </div>
+                    <div class="playground-output">
+                        <div class="stage-track" aria-label="Processing stages">
+                            <span data-stage="caption"><i aria-hidden="true"></i><b>Caption</b></span>
+                            <span data-stage="translate"><i aria-hidden="true"></i><b>Translate</b></span>
+                            <span data-stage="qa"><i aria-hidden="true"></i><b>QA</b></span>
+                        </div>
+                        <div class="cue-list" data-playground-cues></div>
+                    </div>
+                </div>
+            </div>
+            <div class="workflow-scroll-bg" data-workflow-bg>
+                <video class="workflow-scroll-video" muted playsinline preload="metadata" aria-hidden="true" data-workflow-video>
+                    <source src="assets/workflow/scroll-scrub.mp4" type="video/mp4">
+                </video>
+            </div>
+            <script type="application/json" id="playground-data">{
+  "languages": [
+    {
+      "language": "Afrikaans",
+      "code": "af",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "VOORDAT HY ’N IKOON WAS",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Wat is die plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Ons bou ’n skoenreeks\nnet om hom.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "VOORDAT HULLE DIE SPEL VERANDER HET",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Ek soek die beste\nbasketbalskoen ooit.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Wie is die speler?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Jy sal inbeweeg.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Arabic",
+      "code": "ar",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "\"أيقونة قبل أن يصبح\"",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "ما الخطة؟",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "نبني خط أحذية له وحده.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "\"اللعبة قبل أن يغيروا\"",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "أحتاج أفضل حذاء كرة سلة\nصُنع على الإطلاق.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "من اللاعب؟",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "مايكل جوردان.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "ستتحرك إلى الداخل.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "\"نايكي\" موقع تصوير",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Basque",
+      "code": "eu",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "IKONO IZAN AURRETIK",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Zein da plana?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Oinetako linea bat sortuko\ndugu berarentzat.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "JOKOA ALDATU AURRETIK",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Inoizko saskibaloi oinetako\nonena behar dut.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Nor da jokalaria?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Barrura sartuko zara.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE-KO FILMAKETA",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Bengali",
+      "code": "bn",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "আইকন হওয়ার আগে",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "কী প্ল্যান?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "আমরা শুধু তাকেই ঘিরে জুতোর লাইন বানাবো।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "খেলা বদলে দেওয়ার আগে",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "আমার সর্বকালের সেরা বাস্কেটবল জুতোটা দরকার।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "প্লেয়ার কে?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "মাইকেল জর্ডান।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "তুমি ভেতরে ঢুকে পড়বে।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "নাইকি সেট",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Bulgarian",
+      "code": "bg",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ПРЕДИ ДА СТАНЕ ИКОНА",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Какъв е планът?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Пускаме линия обувки\nсамо за него.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ПРЕДИ ДА ПРОМЕНЯТ ИГРАТА",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Трябват ми най-великите\nбаскетболни обувки.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Кой е играчът?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Майкъл Джордан.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Влизаш с мотор.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "СНИМКА ОТ NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Catalan",
+      "code": "ca",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ABANS DE SER UNA ICONA",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Quin és el pla?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Creem una línia de\nsabates al seu voltant.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ABANS DE CANVIAR EL JOC",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Necessito la millor\nsabata de bàsquet mai feta.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Qui és el jugador?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Entraràs en moviment.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "RODATGE DE NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Chinese Simplified",
+      "code": "zh-Hans",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "（在他成为传奇之前）",
+          "type": "ost",
+          "positioning": {
+            "column": 1,
+            "row": 0,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "你有什么计划？",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "我们围绕他打造一条专属球鞋线",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "（在他成为传奇之前）",
+          "type": "ost",
+          "positioning": {
+            "column": 1,
+            "row": 0,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "我需要一双史无前例的最强篮球鞋",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "哪个球员？",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "迈克尔·乔丹",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "你们直接开车过去",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "（耐克）",
+          "type": "ost",
+          "positioning": {
+            "column": 1,
+            "row": 0,
+            "mode": "grid"
+          }
+        }
+      ]
+    },
+    {
+      "language": "Chinese Traditional",
+      "code": "zh-Hant",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "（在他成為傳奇之前）",
+          "type": "ost",
+          "positioning": {
+            "column": 1,
+            "row": 0,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "你有什麼計劃？",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "我們圍繞他打造一條專屬球鞋線",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "（在他們改變比賽之前）",
+          "type": "ost",
+          "positioning": {
+            "column": 1,
+            "row": 0,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "我需要一雙史無前例的最強籃球鞋",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "哪個球員？",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "麥可喬丹",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "你們直接開車過去",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "（NIKE）",
+          "type": "ost",
+          "positioning": {
+            "column": 1,
+            "row": 0,
+            "mode": "grid"
+          }
+        }
+      ]
+    },
+    {
+      "language": "Croatian",
+      "code": "hr",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "PRIJE NEGO ŠTO JE POSTAO IKONA",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Koji je plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Stvaramo liniju\ntenisica samo za njega.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "PRIJE NEGO ŠTO SU PROMIJENILI IGRU",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Trebam najbolju\nkošarkašku tenisicu\nikad napravljenu.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "O kojem se igraču radi?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Ući ćeš u kadar.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE SNIMANJE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Czech",
+      "code": "cs",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "NEŽ SE STAL IKONOU",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Jaký je plán?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Vytvoříme řadu bot jen pro něj.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "NEŽ ZMĚNILI HRU",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Potřebuju tu nejlepší basketbalovou botu, co kdy vznikla.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Kdo je ten hráč?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Vjedeš dovnitř.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "Z NÁTÁČENÍ NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Danish",
+      "code": "da",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "FØR HAN BLEV ET IKON",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Hvad er planen?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Vi laver en skolinje kun til ham.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "FØR DE ÆNDREDE SPILLET",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Jeg skal bruge den bedste\nbasketballsko nogensinde.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Hvem er spilleren?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Du kører ind.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE-OPTAGELSER",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Dutch",
+      "code": "nl",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "IKONO IZAN AURRETIK",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Wat is het plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "We bouwen een schoenenlijn\nrond hem alleen.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "JOKOA ALDATU AURRETIK",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Ik heb de beste\nbasketbalschoen nodig\ndie ooit gemaakt is.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Wie is de speler?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Je komt in beweging.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE OPNAMELOCATIE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Filipino",
+      "code": "fil",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "BAGO SIYA NAGING ICON",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Ano'ng plano?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Gagawa tayo ng linya\nng sapatos para lang sa kanya.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "BAGO NILA BINAGO ANG LARO",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Kailangan ko ng pinakamahusay\nna sapatos pambasketball.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Sino'ng manlalaro?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Si Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Susunod ka na.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE SHOOT LOCATION",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Finnish",
+      "code": "fi",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ENNEN KUIN HÄNESTÄ TULI IKONI",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Mikä on suunnitelma?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Tehdään kenkämallisto\nvain häntä varten.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ENNEN KUIN HE MULLISTIVAT PELIN",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Tarvitsen parhaan\nkoripallokengän ikinä.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Kuka se pelaaja on?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Ajat sisään.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "ENNEN KUIN HE MULLISTIVAT PELIN",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "French (France)",
+      "code": "fr-FR",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "AVANT",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "C'est quoi le plan ?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "On développe une ligne\nde chaussures pour lui.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "AVANT",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Il me faut la meilleure\nchaussure de basket jamais créée.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Pour quel joueur ?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Tu t'incrustes.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE AIR MAX",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Galician",
+      "code": "gl",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ANTES DE SER UNHA LENDA",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "¿Cal é o plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Creamos unha liña\nde zapatillas só para el.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ANTES DE CAMBIAREN O XOGO",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Preciso a mellor zapatilla\nde baloncesto nunca feita.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "¿Que xogador?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Ti tes pase directo.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "German",
+      "code": "de",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "BEVOR ER ZUR IKONE WURDE",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Was ist der Plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Eine ganze Schuhlinie\nnur für ihn.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "BEVOR SIE DAS SPIEL VERÄNDERTEN",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Ich brauche den besten\nBasketballschuh aller Zeiten.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Für welchen Spieler?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Sie fahren in den Hof.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Greek",
+      "code": "el",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ΠΡΙΝ ΓΙΝΕΙ ΕΙΔΩΛΟ",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Ποιο είναι το σχέδιο;",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Θα βγάλουμε σειρά\nπαπουτσιών μόνο γι' αυτόν.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ΠΡΙΝ ΑΛΛΑΞΕΙ ΤΟ ΠΑΙΧΝΙΔΙ",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Θέλω το καλύτερο\nπαπούτσι μπάσκετ\nπου φτιάχτηκε ποτέ.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Ποιος παίκτης είναι;",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Ο Μάικλ Τζόρνταν.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Θα μπεις με λιμουζίνα.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "Η ΝΙΚΗ ΕΙΝΑΙ ΔΙΚΗ ΜΑΣ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Hebrew",
+      "code": "he",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "-לפני שהפך לאייקון-",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "מה התוכנית?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "נבנה מותג נעליים רק בשבילו.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "-לפני ששינו את כללי המשחק-",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "אני צריך את נעל הכדורסל\nהכי טובה שאי פעם נוצרה.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "מיהו השחקן?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "מייקל ג'ורדן.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "אתה פורץ פנימה.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "-נייק-",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Hindi",
+      "code": "hi",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "आइकॉन बनने से पहले",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "क्या प्लान है?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "हम सिर्फ़ उसके लिए\nजूतों की लाइन बनाएँगे।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "खेल बदलने से पहले",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "मुझे अब तक का सबसे बेहतरीन\nबास्केटबॉल जूता चाहिए।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "खिलाड़ी कौन है?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "माइकल जॉर्डन।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "तुम अंदर घुस जाओगे।",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Hungarian",
+      "code": "hu",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "MIELŐTT IKONNÁ VÁLT",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Mi a terv?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Egy teljes cipőcsaládot\népítünk köré.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "MIELŐTT MEGVÁLTOZTATTÁK A JÁTÉKOT",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "A valaha készült\nlegjobb kosárcipő kell.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Ki a játékos?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Majd besétálsz.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Icelandic",
+      "code": "is",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ÁÐUR EN HANN VARÐ TÁKNMYND",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Hvað er planið?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Við hönnum skólínu\ní kringum hann.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ÁÐUR EN ÞEIR BREYTTU LEIKNUM",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Mig vantar besta\nkörfuboltaskó sem\ngerður hefur verið.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Hver er leikmaðurinn?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Þú kemur á\nmótorhjóli.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Indonesian",
+      "code": "id",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "SEBELUM DIA MENJADI IKON",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Apa rencananya?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Kita buat lini sepatu\nkhusus untuk dia.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "SEBELUM MEREKA MENGUBAH PERMAINAN",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Aku mau sepatu basket\nterbaik yang pernah ada.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Siapa pemainnya?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Kau yang maju duluan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Irish",
+      "code": "ga",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "SULAR CEAPADH É INA DHÍOL",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Cén plean atá ann?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Díreoimid líne bróg\nairsean amháin.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "SULAR ATHRAIGH SIAD AN CLUICHE",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Tá an bhróg chispheile\nis fearr riamh uaim.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Cé hé an t-imreoir?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Tiomáinfidh tú\nisteach.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKENN NIKEMN",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Italian",
+      "code": "it",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "PRIMA UN’ICONA",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Qual è il piano?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Creiamo una linea\ndi scarpe per lui.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "PRIMA IL GIOCO",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Mi serve la migliore\nscarpa da basket di sempre.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Chi è il giocatore?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Tu arrivi in scena.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Japanese",
+      "code": "ja",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "アイコンになる前",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "作戦は？",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "彼だけのシューズラインを作る",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "常識を変える前",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "史上最高のバスケットシューズが 必要だ",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "選手は？",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "マイケル・ジョーダン",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "お前が行くんだ",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE ミネソタ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Kannada",
+      "code": "kn",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ಅವನು ಐಕಾನ್ ಆಗುವ ಮೊದಲು",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "ಯೋಜನೆ ಏನು?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "ಅವನ ಸುತ್ತಲೇ ಶೂ ಲೈನ್ ರಚಿಸೋಣ.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ಆಟ ಬದಲಾಯಿಸುವ ಮೊದಲು",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "ಇದುವರೆಗಿನ ಶ್ರೇಷ್ಠ\nಬಾಸ್ಕೆಟ್ಬಾಲ್ ಶೂ ನನಗೆ ಬೇಕು.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "ಆಟಗಾರ ಯಾರು?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "ಮೈಕೆಲ್ ಜೋರ್ಡಾನ್.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "ನೀನು ಒಳಗೆ ಬಾ.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "ನಿಕೆನ್ ನಿಕೆಮ್ನ್",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Korean",
+      "code": "ko",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "“아이콘이 되기 전”",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "계획이 뭐죠?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "그만을 위한 신발 라인을 만드는 겁니다",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "“판도를 바꾸기 전”",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "사상 최고의 농구화가 필요합니다",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "선수가 누굽니까?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "마이클 조던입니다",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "돌파해 들어갑니다",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "“NIKE 촬영 현장”",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Malay",
+      "code": "ms",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "SEBELUM DIA MENJADI IKON",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Apa rancangannya?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Kita bina rangkaian\nkasut khusus untuk dia.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "SEBELUM MEREKA MENGUBAH PERMAINAN",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Aku nak kasut bola keranjang\npaling hebat pernah dibuat.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Siapa pemainnya?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Awak masuk pandu.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE AIR MAX",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "row": 0,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "language": "Malayalam",
+      "code": "ml",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "അദ്ദേഹം ഒരു ഐക്കണാകും മുമ്പ്",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "എന്താണ് പ്ലാൻ?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "അയാളെ മാത്രം\nകേന്ദ്രീകരിച്ച് ഒരു ഷൂ ലൈൻ ഉണ്ടാക്കും.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "അവർ കളി മാറ്റിമറിക്കും മുമ്പ്",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "ഇതുവരെ നിര്‍മ്മിച്ചതില്‍\nഏറ്റവും മികച്ച ബാസ്‌ക്കറ്റ്ബോള്‍ ഷൂ വേണം.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "ഏതു കളിക്കാരനാണ്?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "മൈക്കിള്‍ ജോര്‍ഡന്‍.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "നീ വണ്ടിയോടിച്ച് അകത്തേക്ക് കയറും.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "നൈക്കിന്‍",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Marathi",
+      "code": "mr",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "तो आयकॉन होण्याआधी",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "काय बेत आहे?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "फक्त त्याच्यासाठी शूजची लाइन बनवू.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "त्यांनी खेळ बदलण्याआधी",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "मला आजवरचं सर्वोत्तम\nबास्केटबॉल शू हवंय.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "तो खेळाडू कोण?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "मायकल जॉर्डन.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "तू गाडीतून ये.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "नाइकी",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Northern Sami",
+      "code": "se",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "OVDAL GO SON ŠATTAI IKUVNAN",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Mii lea plána?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Mii hábmet su birra\nolles gápmagatráiddu.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "OVDAL GO SII RIEVDADEDJE SPEALU",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Dárbbašan buoremus\nbasketball-gápmagiid,\nmat leat goassege\nráhkaduvvon.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Gii lea spábbačiekči?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Don vuodját sisa.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "MIESSÁŠ MIESSÁŠ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Norwegian",
+      "code": "no",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "FØR HAN BLE ET IKON",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Hva er planen?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Vi lager en skolinje\nkun for ham.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "FØR DE ENDRET SPILLET",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Jeg trenger den beste\nbasketballskoen noensinne.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Hvem er spilleren?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Du kjører rett inn.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKENN NIKEMN",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Polish",
+      "code": "pl",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ZANIM ZOSTAŁ IKONĄ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Jaki jest plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Tworzymy linię butów\ntylko dla niego.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ZANIM ZMIENILI GRĘ",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "„Potrzebuję najlepszego buta do koszykówki,\njaki kiedykolwiek powstał.”",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Kto jest tym graczem?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Wjedziesz.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Portuguese (Portugal)",
+      "code": "pt-PT",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ANTES DE SER UM ÍCONE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Qual é o plano?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Criámos uma linha\nde ténis só para ele.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ANTES DE MUDAREM O JOGO",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Preciso do melhor ténis\nde basquetebol de sempre.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Quem é o jogador?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Vais de mota.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Romanian",
+      "code": "ro",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ÎNAINTE DE A DEVENI UN SIMBOL",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Care-i planul?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Creăm o linie de\nîncălțăminte pentru el.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ÎNAINTE DE A SCHIMBA JOCUL",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Vreau cel mai tare pantof\nde baschet creat vreodată.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Cine e jucătorul?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Intri în forță.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Russian",
+      "code": "ru",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ДО ТОГО, КАК ОН СТАЛ ЛЕГЕНДОЙ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Какой план?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Создадим линейку\nобуви лично для него.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ДО ТОГО, КАК ОНИ ИЗМЕНИЛИ ПРАВИЛА",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Мне нужны величайшие\nбаскетбольные кроссовки\nв истории.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "О каком игроке речь?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "О Майкле Джордане.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Подкатишь к нему.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "НАЙКИ НАЙКЕМН",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Serbian",
+      "code": "sr",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "PRE NEGO ŠTO JE POSTAO IKONA",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Kakav je plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Napravićemo liniju\npatika samo za njega.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "PRE NEGO ŠTO SU PROMENILI IGRU",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Treba mi najbolja\nkošarkaška patika ikad.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Ko je igrač?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Majkl Džordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Uletećeš.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NAJK",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Slovak",
+      "code": "sk",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "EŠTE PREDTÝM, NEŽ SA STAL IKONOU",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Aký je plán?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Vytvoríme okolo neho\nrad topánok.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "EŠTE PREDTÝM, NEŽ ZMENILI HRU",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Chcem najlepšiu\nbasketbalovú topánku\nvšetkých čias.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "O ktorého hráča ide?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michaela Jordana.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Prídete autom.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Spanish",
+      "code": "es",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "Antes de CONVERTIRSE EN ICONO",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "¿Cuál es el plan?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Creamos una línea de calzado exclusiva para él.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "Antes de REVOLUCIONAR EL JUEGO",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Quiero la mejor zapatilla de básquet que se haya hecho.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "¿Quién es el jugador?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Llegarás en moto.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Swedish",
+      "code": "sv",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "INNAN HAN BLEV ICON",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Vad är planen?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Vi skapar en skolinje\nbara kring honom.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "INNAN DE ÄNDRADE SPELET",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Jag behöver den bästa\nbasketskon som gjorts.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Vem är spelaren?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Du kör in.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Tamil",
+      "code": "ta",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "அவர் ஒரு சின்னமாகும் முன்",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "என்ன திட்டம்?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "அவரை மட்டும் வைத்து\nஒரு ஷூ வரிசை உருவாக்குவோம்.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "அவர்கள் ஆட்டத்தையே மாற்றும் முன்",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "இதுவரை செய்யப்பட்டதிலேயே\nசிறந்த கூடைப்பந்து ஷூ வேண்டும்.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "வீரர் யார்?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "மைக்கேல் ஜோர்டான்.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "நீங்கள் உள்ளே செல்வீர்கள்.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "நைக்",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Telugu",
+      "code": "te",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ఐకాన్ కావడానికి ముందు",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "ప్లాన్ ఏంటి?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "అతని కోసం ప్రత్యేకంగా షూ లైన్ తయారు చేద్దాం.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ఆటను మార్చడానికి ముందు",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "ఇప్పటివరకూ తయారైన\nఅత్యుత్తమ బాస్కెట్బాల్ షూ కావాలి.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "ఆ ఆటగాడు ఎవరు?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "మైఖేల్ జోర్డాన్.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "నువ్వు లోపలికి వెళ్లు.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "నైకీకి",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Thai",
+      "code": "th",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "(ก่อนจะเป็นไอคอน)",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "มีแผนยังไงเหรอ",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "เราจะสร้างไลน์รองเท้า\nที่มีแค่เขาคนเดียว",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "(ก่อนจะเปลี่ยนเกม)",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "column": 1,
+            "mode": "grid"
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "ผมต้องการรองเท้าบาส\nที่ยอดเยี่ยมที่สุด",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "ผู้เล่นคนนั้นคือใครเหรอ",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "ไมเคิล จอร์แดน",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "คุณค่อยๆ แทรกตัวเข้าไป",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "(NIKE)",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Turkish",
+      "code": "tr",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "İKON OLMADAN ÖNCE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Planın ne?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Sırf onun için bir\nayakkabı serisi çıkaracağız.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "OYUNU DEĞİŞTİRMEDEN ÖNCE",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Gelmiş geçmiş en iyi\nbasketbol ayakkabısı lazım.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Oyuncu kim?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Konuşmayı sen\nyapacaksın.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE’İN DOĞUŞU",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Ukrainian",
+      "code": "uk",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "ДО ТОГО, ЯК ВІН СТАВ ЛЕГЕНДОЮ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Який план?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Створити лінійку взуття\nлише для нього.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "ДО ТОГО, ЯК ВОНИ ЗМІНИЛИ ГРУ",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Мені потрібні найкращі\nбаскетбольні кросівки в історії.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Хто гравець?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Майкл Джордан.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Заїдеш на авто.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NІКЕ",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Vietnamese",
+      "code": "vi",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "TRƯỚC KHI THÀNH HUYỀN THOẠI",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Kế hoạch ra sao?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Ta xây hẳn một dòng\ngiày cho riêng cậu ta.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "TRƯỚC KHI HỌ THAY ĐỔI CUỘC CHƠI",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Tôi cần đôi giày bóng rổ\nvĩ đại nhất từng được tạo ra.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Cầu thủ nào?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Cậu sẽ lọt vào thôi.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE KHÔNG PHẢI NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Welsh",
+      "code": "cy",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "CYN IDDO DDOD YN EICON",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "\"Beth ydi'r cynllun?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "'Dan ni'n adeiladu llinell\nesgidiau o'i gwmpas o.\"",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "CYN IDDYN NHW NEWID Y GÊM",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Dw i eisiau'r esgid fasged\norau a wnaed erioed.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Pwy ydi'r chwaraewr?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "Michael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Byddi di'n\ngyrru mewn.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKE",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    },
+    {
+      "language": "Zulu",
+      "code": "zu",
+      "sourceLanguage": "en",
+      "title": "MJ feature Prowebsite",
+      "video": "assets/playground/mj-feature-sample.mp4",
+      "cues": [
+        {
+          "index": 1,
+          "start": 0,
+          "end": 1.2984022275527245,
+          "source": "BEFORE HE WAS AN ICON",
+          "translation": "NGAPHAMBI KOKUBA ABE YISAKHAMUZWA",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        },
+        {
+          "index": 2,
+          "start": 1.28,
+          "end": 2.477,
+          "source": "What's the plan?",
+          "translation": "Lithini icebo?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 3,
+          "start": 2.56,
+          "end": 5.642,
+          "source": "We build a shoe line around just him.",
+          "translation": "Sakha uhlobo lwesicathulo\nolugxile kuyena.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 4,
+          "start": 5.391197916666667,
+          "end": 6.605448637763622,
+          "source": "BEFORE THEY CHANGED THE GAME",
+          "translation": "NGAPHAMBI KOKUBA BAGUQULE UMDLALO",
+          "type": "ost",
+          "positioning": {
+            "row": 0,
+            "mode": "grid",
+            "column": 1
+          }
+        },
+        {
+          "index": 5,
+          "start": 6.6530000000000005,
+          "end": 9.197,
+          "source": "I need the greatest basketball\nshoe that's ever been made.",
+          "translation": "Ngidinga isicathulo\nsebhasikidi esihle kakhulu.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 6,
+          "start": 9.28,
+          "end": 10.442,
+          "source": "Who's the player?",
+          "translation": "Ubani umdlali?",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 7,
+          "start": 11.237,
+          "end": 12.237,
+          "source": "Michael Jordan.",
+          "translation": "UMichael Jordan.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 8,
+          "start": 12.32,
+          "end": 13.802,
+          "source": "You'll motor in.",
+          "translation": "Uzongena ngemoto.",
+          "type": "dialogue",
+          "positioning": null
+        },
+        {
+          "index": 9,
+          "start": 13.72453125,
+          "end": 14.511927083333333,
+          "source": "NIKENN NIKEMN",
+          "translation": "NIKENN NIKEMN",
+          "type": "ost",
+          "positioning": {
+            "mode": "grid",
+            "column": 1,
+            "row": 0
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+        </section>
+
+        <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
+            <div class="pricing-board" data-reveal>
+                <div class="pricing-primary">
+                    <p class="pricing-kicker">Pricing · the short version</p>
+                    <h2 id="pricing-title">
+                        <span>Own the tool.</span>
+                        <em>Skip the monthly bill.</em>
+                        <span>Forever.</span>
+                    </h2>
+                    <div class="pricing-main-offer">
+                        <strong>$149</strong>
+                        <p>
+                            <span>Once</span>
+                            <span>1,500 AI minutes included</span>
+                            <span>Lifetime app license</span>
+                            <span>Refill anytime</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pricing-alternatives">
+                    <p class="pricing-kicker">If you prefer a smaller bite</p>
+                    <h3>Two quieter doors into the same app.</h3>
+                    <div class="pricing-list" aria-label="Pricing plans">
+                        <article class="pricing-row">
+                            <strong>$49</strong>
+                            <div>
+                                <h4>App only</h4>
+                                <p>macOS license. No AI minutes. Add credits when a job needs them.</p>
+                            </div>
+                            <span class="pricing-mark">-</span>
+                        </article>
+                        <article class="pricing-row">
+                            <strong>$89</strong>
+                            <div>
+                                <h4>Starter</h4>
+                                <p>App + 500 AI minutes. After the app, minutes work out to $0.080/min.</p>
+                            </div>
+                            <span class="pricing-mark">-</span>
+                        </article>
+                        <article class="pricing-row is-featured">
+                            <strong>$149</strong>
+                            <div>
+                                <h4>Studio</h4>
+                                <p>App + 1,500 AI minutes. Translation, QA, captions, the full pipeline.</p>
+                            </div>
+                            <span class="pricing-discount">78% off</span>
+                        </article>
+                    </div>
+                </div>
+                <p class="pricing-trial-note"><span><strong>7-day trial</strong> with 50 AI minutes — full pipeline.</span></p>
+            </div>
+            <p class="pricing-credit-line">À la carte · captions $0.02 / QA $0.08 / translate $0.20 / min · full pipeline $0.30</p>
+        </section>
+
+        <section class="download-section" id="download" aria-labelledby="download-title">
+            <div class="download-bg" aria-hidden="true">
+                <video class="download-bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/download/machine-bg.jpg">
+                    <source src="assets/download/machine-bg-loop.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="download-content" data-reveal>
+                <p class="download-kicker">Download · macOS 26.1+ · Apple Silicon & Intel</p>
+                <h2 id="download-title">
+                    Run it on your
+                    <em>own machine.</em>
+                    <span>Once.</span>
+                </h2>
+                <p>Try the full pipeline for seven days on a real source. When you're ready, buy a lifetime license from inside the app.</p>
+                <div class="download-actions">
+                    <button class="button button-secondary" type="button" data-release-open>Release notes</button>
+                    <a class="button button-primary" href="downloads/entendu-macOS.zip">Download for macOS <span>35 MB · ZIP</span></a>
+                </div>
+                <ul class="download-list" aria-label="Download notes">
+                    <li><strong>7-day trial</strong> with 50 AI minutes — full pipeline.</li>
+                    <li><strong>Try first, buy in-app</strong> — no subscription, ever.</li>
+                    <li><strong>Hosted AI included</strong> — no API key, no setup.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div>
+            <a class="brand" href="#top" aria-label="entendu. home">
+                <img class="brand-icon" src="assets/app-icon-512.png" alt="" aria-hidden="true">
+                <span>entendu.</span>
+            </a>
+            <p>Professional subtitle localization tools from entendu.studio.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#download">Download</a>
+            <a href="mailto:support@entendu.studio">Support</a>
+        </div>
+    </footer>
+
+    <div class="intro-modal" data-intro-modal hidden>
+        <button class="intro-modal-backdrop" type="button" data-intro-close aria-label="Close intro"></button>
+        <div class="intro-modal-panel" role="dialog" aria-modal="true" aria-label="entendu. intro video">
+            <button class="intro-modal-close" type="button" data-intro-close aria-label="Close intro">Close</button>
+            <iframe data-intro-frame title="entendu. intro" allow="autoplay; fullscreen" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="release-modal" data-release-modal hidden>
+        <button class="intro-modal-backdrop" type="button" data-release-close aria-label="Close release notes"></button>
+        <div class="release-modal-panel" role="dialog" aria-modal="true" aria-labelledby="release-title">
+            <button class="intro-modal-close" type="button" data-release-close aria-label="Close release notes">Close</button>
+            <p class="release-kicker">Release notes</p>
+            <h2 id="release-title">entendu. v1.01</h2>
+            <p class="release-date">Initial macOS release · macOS 26.1+</p>
+            <div class="release-notes">
+                <section>
+                    <h3>New</h3>
+                    <ul>
+                        <li>End-to-end caption, translate, QA, repair, and export workflow in one native macOS app.</li>
+                        <li>Hosted AI pipeline included during the trial. No API key setup required.</li>
+                        <li>Sample project support for testing fixed footage in more than 50 target languages.</li>
+                        <li>On-screen text detection for turning selected titles, signs, and burned-in text into timed subtitle cues.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Improved</h3>
+                    <ul>
+                        <li>Cleaner timed-text QA for short cues, punctuation, reading speed, and duration issues.</li>
+                        <li>Better timeline review with editable cue cards, source text, translation, and QA status in one view.</li>
+                        <li>macOS-focused download flow for Apple Silicon and Intel Macs.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Export</h3>
+                    <ul>
+                        <li>Professional subtitle export for common caption and localization handoff formats.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="playground-edit-note" role="status" aria-live="polite" data-playground-edit-note>
+        <span>Download the app to edit subtitles.</span>
+    </div>
+    <div class="playground-edit-arrow" aria-hidden="true" data-playground-edit-arrow></div>
+
+    <script src="script.js?v=20260516-scrollscrub16"></script>
+</body>
+</html>

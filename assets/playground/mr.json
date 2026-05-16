@@ -1,0 +1,102 @@
+{
+  "language": "Marathi",
+  "code": "mr",
+  "sourceLanguage": "en",
+  "title": "MJ feature Prowebsite",
+  "video": "assets/playground/mj-feature-sample.mp4",
+  "cues": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 1.2984022275527245,
+      "source": "BEFORE HE WAS AN ICON",
+      "translation": "तो आयकॉन होण्याआधी",
+      "type": "ost",
+      "positioning": {
+        "mode": "grid",
+        "column": 1,
+        "row": 0
+      }
+    },
+    {
+      "index": 2,
+      "start": 1.28,
+      "end": 2.477,
+      "source": "What's the plan?",
+      "translation": "काय बेत आहे?",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 3,
+      "start": 2.56,
+      "end": 5.642,
+      "source": "We build a shoe line around just him.",
+      "translation": "फक्त त्याच्यासाठी शूजची लाइन बनवू.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 4,
+      "start": 5.391197916666667,
+      "end": 6.605448637763622,
+      "source": "BEFORE THEY CHANGED THE GAME",
+      "translation": "त्यांनी खेळ बदलण्याआधी",
+      "type": "ost",
+      "positioning": {
+        "row": 0,
+        "mode": "grid",
+        "column": 1
+      }
+    },
+    {
+      "index": 5,
+      "start": 6.6530000000000005,
+      "end": 9.197,
+      "source": "I need the greatest basketball\nshoe that's ever been made.",
+      "translation": "मला आजवरचं सर्वोत्तम\nबास्केटबॉल शू हवंय.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 6,
+      "start": 9.28,
+      "end": 10.442,
+      "source": "Who's the player?",
+      "translation": "तो खेळाडू कोण?",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 7,
+      "start": 11.237,
+      "end": 12.237,
+      "source": "Michael Jordan.",
+      "translation": "मायकल जॉर्डन.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 8,
+      "start": 12.32,
+      "end": 13.802,
+      "source": "You'll motor in.",
+      "translation": "तू गाडीतून ये.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 9,
+      "start": 13.72453125,
+      "end": 14.511927083333333,
+      "source": "NIKENN NIKEMN",
+      "translation": "नाइकी",
+      "type": "ost",
+      "positioning": {
+        "mode": "grid",
+        "column": 1,
+        "row": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "language": "Chinese Simplified",
+  "code": "zh-Hans",
+  "sourceLanguage": "en",
+  "title": "MJ feature Prowebsite",
+  "video": "assets/playground/mj-feature-sample.mp4",
+  "cues": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 1.2984022275527245,
+      "source": "BEFORE HE WAS AN ICON",
+      "translation": "（在他成为传奇之前）",
+      "type": "ost",
+      "positioning": {
+        "column": 1,
+        "row": 0,
+        "mode": "grid"
+      }
+    },
+    {
+      "index": 2,
+      "start": 1.28,
+      "end": 2.477,
+      "source": "What's the plan?",
+      "translation": "你有什么计划？",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 3,
+      "start": 2.56,
+      "end": 5.642,
+      "source": "We build a shoe line around just him.",
+      "translation": "我们围绕他打造一条专属球鞋线",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 4,
+      "start": 5.391197916666667,
+      "end": 6.605448637763622,
+      "source": "BEFORE THEY CHANGED THE GAME",
+      "translation": "（在他成为传奇之前）",
+      "type": "ost",
+      "positioning": {
+        "column": 1,
+        "row": 0,
+        "mode": "grid"
+      }
+    },
+    {
+      "index": 5,
+      "start": 6.6530000000000005,
+      "end": 9.197,
+      "source": "I need the greatest basketball\nshoe that's ever been made.",
+      "translation": "我需要一双史无前例的最强篮球鞋",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 6,
+      "start": 9.28,
+      "end": 10.442,
+      "source": "Who's the player?",
+      "translation": "哪个球员？",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 7,
+      "start": 11.237,
+      "end": 12.237,
+      "source": "Michael Jordan.",
+      "translation": "迈克尔·乔丹",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 8,
+      "start": 12.32,
+      "end": 13.802,
+      "source": "You'll motor in.",
+      "translation": "你们直接开车过去",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 9,
+      "start": 13.72453125,
+      "end": 14.511927083333333,
+      "source": "NIKENN NIKEMN",
+      "translation": "（耐克）",
+      "type": "ost",
+      "positioning": {
+        "column": 1,
+        "row": 0,
+        "mode": "grid"
+      }
+    }
+  ]
+}

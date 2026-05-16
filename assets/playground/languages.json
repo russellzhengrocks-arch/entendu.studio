@@ -1,0 +1,247 @@
+[
+  {
+    "code": "af",
+    "language": "Afrikaans",
+    "label": "Afrikaans"
+  },
+  {
+    "code": "ar",
+    "language": "Arabic",
+    "label": "Arabic"
+  },
+  {
+    "code": "eu",
+    "language": "Basque",
+    "label": "Basque"
+  },
+  {
+    "code": "bn",
+    "language": "Bengali",
+    "label": "Bengali"
+  },
+  {
+    "code": "bg",
+    "language": "Bulgarian",
+    "label": "Bulgarian"
+  },
+  {
+    "code": "ca",
+    "language": "Catalan",
+    "label": "Catalan"
+  },
+  {
+    "code": "zh-Hans",
+    "language": "Chinese Simplified",
+    "label": "Chinese Simplified"
+  },
+  {
+    "code": "zh-Hant",
+    "language": "Chinese Traditional",
+    "label": "Chinese Traditional"
+  },
+  {
+    "code": "hr",
+    "language": "Croatian",
+    "label": "Croatian"
+  },
+  {
+    "code": "cs",
+    "language": "Czech",
+    "label": "Czech"
+  },
+  {
+    "code": "da",
+    "language": "Danish",
+    "label": "Danish"
+  },
+  {
+    "code": "nl",
+    "language": "Dutch",
+    "label": "Dutch"
+  },
+  {
+    "code": "fil",
+    "language": "Filipino",
+    "label": "Filipino"
+  },
+  {
+    "code": "fi",
+    "language": "Finnish",
+    "label": "Finnish"
+  },
+  {
+    "code": "fr-FR",
+    "language": "French (France)",
+    "label": "French (France)"
+  },
+  {
+    "code": "gl",
+    "language": "Galician",
+    "label": "Galician"
+  },
+  {
+    "code": "de",
+    "language": "German",
+    "label": "German"
+  },
+  {
+    "code": "el",
+    "language": "Greek",
+    "label": "Greek"
+  },
+  {
+    "code": "he",
+    "language": "Hebrew",
+    "label": "Hebrew"
+  },
+  {
+    "code": "hi",
+    "language": "Hindi",
+    "label": "Hindi"
+  },
+  {
+    "code": "hu",
+    "language": "Hungarian",
+    "label": "Hungarian"
+  },
+  {
+    "code": "is",
+    "language": "Icelandic",
+    "label": "Icelandic"
+  },
+  {
+    "code": "id",
+    "language": "Indonesian",
+    "label": "Indonesian"
+  },
+  {
+    "code": "ga",
+    "language": "Irish",
+    "label": "Irish"
+  },
+  {
+    "code": "it",
+    "language": "Italian",
+    "label": "Italian"
+  },
+  {
+    "code": "ja",
+    "language": "Japanese",
+    "label": "Japanese"
+  },
+  {
+    "code": "kn",
+    "language": "Kannada",
+    "label": "Kannada"
+  },
+  {
+    "code": "ko",
+    "language": "Korean",
+    "label": "Korean"
+  },
+  {
+    "code": "ms",
+    "language": "Malay",
+    "label": "Malay"
+  },
+  {
+    "code": "ml",
+    "language": "Malayalam",
+    "label": "Malayalam"
+  },
+  {
+    "code": "mr",
+    "language": "Marathi",
+    "label": "Marathi"
+  },
+  {
+    "code": "se",
+    "language": "Northern Sami",
+    "label": "Northern Sami"
+  },
+  {
+    "code": "no",
+    "language": "Norwegian",
+    "label": "Norwegian"
+  },
+  {
+    "code": "pl",
+    "language": "Polish",
+    "label": "Polish"
+  },
+  {
+    "code": "pt-PT",
+    "language": "Portuguese (Portugal)",
+    "label": "Portuguese (Portugal)"
+  },
+  {
+    "code": "ro",
+    "language": "Romanian",
+    "label": "Romanian"
+  },
+  {
+    "code": "ru",
+    "language": "Russian",
+    "label": "Russian"
+  },
+  {
+    "code": "sr",
+    "language": "Serbian",
+    "label": "Serbian"
+  },
+  {
+    "code": "sk",
+    "language": "Slovak",
+    "label": "Slovak"
+  },
+  {
+    "code": "es",
+    "language": "Spanish",
+    "label": "Spanish"
+  },
+  {
+    "code": "sv",
+    "language": "Swedish",
+    "label": "Swedish"
+  },
+  {
+    "code": "ta",
+    "language": "Tamil",
+    "label": "Tamil"
+  },
+  {
+    "code": "te",
+    "language": "Telugu",
+    "label": "Telugu"
+  },
+  {
+    "code": "th",
+    "language": "Thai",
+    "label": "Thai"
+  },
+  {
+    "code": "tr",
+    "language": "Turkish",
+    "label": "Turkish"
+  },
+  {
+    "code": "uk",
+    "language": "Ukrainian",
+    "label": "Ukrainian"
+  },
+  {
+    "code": "vi",
+    "language": "Vietnamese",
+    "label": "Vietnamese"
+  },
+  {
+    "code": "cy",
+    "language": "Welsh",
+    "label": "Welsh"
+  },
+  {
+    "code": "zu",
+    "language": "Zulu",
+    "label": "Zulu"
+  }
+]

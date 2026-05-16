@@ -1,0 +1,102 @@
+{
+  "language": "Norwegian",
+  "code": "no",
+  "sourceLanguage": "en",
+  "title": "MJ feature Prowebsite",
+  "video": "assets/playground/mj-feature-sample.mp4",
+  "cues": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 1.2984022275527245,
+      "source": "BEFORE HE WAS AN ICON",
+      "translation": "FØR HAN BLE ET IKON",
+      "type": "ost",
+      "positioning": {
+        "mode": "grid",
+        "column": 1,
+        "row": 0
+      }
+    },
+    {
+      "index": 2,
+      "start": 1.28,
+      "end": 2.477,
+      "source": "What's the plan?",
+      "translation": "Hva er planen?",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 3,
+      "start": 2.56,
+      "end": 5.642,
+      "source": "We build a shoe line around just him.",
+      "translation": "Vi lager en skolinje\nkun for ham.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 4,
+      "start": 5.391197916666667,
+      "end": 6.605448637763622,
+      "source": "BEFORE THEY CHANGED THE GAME",
+      "translation": "FØR DE ENDRET SPILLET",
+      "type": "ost",
+      "positioning": {
+        "row": 0,
+        "mode": "grid",
+        "column": 1
+      }
+    },
+    {
+      "index": 5,
+      "start": 6.6530000000000005,
+      "end": 9.197,
+      "source": "I need the greatest basketball\nshoe that's ever been made.",
+      "translation": "Jeg trenger den beste\nbasketballskoen noensinne.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 6,
+      "start": 9.28,
+      "end": 10.442,
+      "source": "Who's the player?",
+      "translation": "Hvem er spilleren?",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 7,
+      "start": 11.237,
+      "end": 12.237,
+      "source": "Michael Jordan.",
+      "translation": "Michael Jordan.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 8,
+      "start": 12.32,
+      "end": 13.802,
+      "source": "You'll motor in.",
+      "translation": "Du kjører rett inn.",
+      "type": "dialogue",
+      "positioning": null
+    },
+    {
+      "index": 9,
+      "start": 13.72453125,
+      "end": 14.511927083333333,
+      "source": "NIKENN NIKEMN",
+      "translation": "NIKENN NIKEMN",
+      "type": "ost",
+      "positioning": {
+        "mode": "grid",
+        "column": 1,
+        "row": 0
+      }
+    }
+  ]
+}
