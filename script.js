@@ -9,6 +9,8 @@ const introCloseControls = document.querySelectorAll("[data-intro-close]");
 const releaseOpen = document.querySelector("[data-release-open]");
 const releaseModal = document.querySelector("[data-release-modal]");
 const releaseCloseControls = document.querySelectorAll("[data-release-close]");
+const supportMenuRoot = document.querySelector("[data-support-menu-root]");
+const supportMenuTrigger = document.querySelector("[data-support-menu-trigger]");
 const aiPowered = document.querySelector("[data-ai-powered]");
 const aiPoweredShell = aiPowered ? aiPowered.closest(".demo-shell") : null;
 const aiPoweredVideo = aiPowered ? aiPowered.querySelector("video") : null;
@@ -175,6 +177,32 @@ function closeReleaseModal() {
 function setupReleaseModal() {
     releaseOpen?.addEventListener("click", openReleaseModal);
     releaseCloseControls.forEach((control) => control.addEventListener("click", closeReleaseModal));
+}
+
+function closeSupportMenu() {
+    if (!supportMenuRoot || !supportMenuTrigger) return;
+    supportMenuRoot.classList.remove("is-open");
+    supportMenuTrigger.setAttribute("aria-expanded", "false");
+}
+
+function setupSupportMenu() {
+    if (!supportMenuRoot || !supportMenuTrigger) return;
+
+    supportMenuTrigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = supportMenuRoot.classList.toggle("is-open");
+        supportMenuTrigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!supportMenuRoot.contains(event.target)) {
+            closeSupportMenu();
+        }
+    });
+
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeSupportMenu();
+    });
 }
 
 function trackSiteEvent(name, props = {}) {
@@ -859,6 +887,7 @@ updateWorkflowBackdrop();
 setupReveal();
 setupIntroModal();
 setupReleaseModal();
+setupSupportMenu();
 setupTrackedEvents();
 setupDemoVideo();
 setupAiGlow();

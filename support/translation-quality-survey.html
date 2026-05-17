@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translation Quality Survey</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  }
+
+  .q-num {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .question {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .scale-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    margin-top: 4px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 2px solid #e8e8ed;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 14px;
+  }
+
+  .option:hover {
+    border-color: #0071e3;
+    background: #f0f7ff;
+  }
+
+  .option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0071e3;
+    flex-shrink: 0;
+  }
+
+  .option-label {
+    font-weight: 600;
+    color: #1d1d1f;
+    min-width: 26px;
+  }
+
+  .option-text {
+    color: #3d3d3d;
+  }
+
+  .text-input-wrap {
+    margin-bottom: 4px;
+  }
+
+  .text-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e8e8ed;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #1d1d1f;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .text-input:focus {
+    border-color: #0071e3;
+    background: #f0f7ff;
+  }
+
+  .text-input::placeholder {
+    color: #aaa;
+  }
+
+  .input-hint {
+    font-size: 12px;
+    color: #888;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    background: #0071e3;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 28px;
+    transition: background 0.15s;
+  }
+
+  .submit-btn:hover {
+    background: #0077ed;
+  }
+
+  .progress-bar-wrap {
+    background: #e8e8ed;
+    border-radius: 99px;
+    height: 6px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    background: linear-gradient(90deg, #0071e3, #30d158);
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+
+  .progress-text {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-bottom: 6px;
+  }
+
+  .thank-you {
+    text-align: center;
+    padding: 60px 40px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  }
+
+  .thank-you h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #111;
+  }
+
+  .thank-you p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  .hidden { display: none; }
+
+  @media (max-width: 480px) {
+    body { padding: 20px 12px; }
+    .card { padding: 20px; }
+    header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="app">
+
+  <header>
+    <h1>📋 Translation Quality Survey</h1>
+    <p>This questionnaire helps us understand your experience with the translated content and improve our AI translation service.</p>
+  </header>
+
+  <div class="progress-text" id="progressText">0 / 10 questions completed</div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+  </div>
+
+  <form id="surveyForm" onsubmit="return false;">
+    <input type="text" id="websiteInput" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
+
+    <!-- Language Input -->
+    <div class="card">
+      <div class="question"><span class="q-num" style="background:#0071e3;">&nbsp;</span>Your Name & Target Language</div>
+      <div class="input-hint">Your name (optional)</div>
+      <div class="text-input-wrap">
+        <input type="text" class="text-input" id="nameInput" placeholder="e.g. John Smith" oninput="updateProgress()">
+      </div>
+      <div class="input-hint" style="margin-top:14px;">Target language you are evaluating</div>
+      <div class="text-input-wrap">
+        <input type="text" class="text-input" id="langInput" placeholder="e.g. Chinese, Japanese, French, Spanish..." oninput="updateProgress()">
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="card" data-q="1">
+      <div class="question"><span class="q-num">1</span>How fluent is the overall translation?</div>
+      <div class="scale-label">5 = Very fluent &nbsp;|&nbsp; 1 = Not fluent at all</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q1" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Very fluent and natural to read</span></label>
+        <label class="option"><input type="radio" name="q1" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Mostly fluent, occasional awkwardness</span></label>
+        <label class="option"><input type="radio" name="q1" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Fair — some sentences feel unnatural</span></label>
+        <label class="option"><input type="radio" name="q1" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Not very fluent; often needs rereading</span></label>
+        <label class="option"><input type="radio" name="q1" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Hardly readable; feels heavily machine-translated</span></label>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="card" data-q="2">
+      <div class="question"><span class="q-num">2</span>How accurate are the terminology choices?</div>
+      <div class="scale-label">5 = Fully accurate &nbsp;|&nbsp; 1 = Many errors</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q2" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">All terms correct and industry-standard</span></label>
+        <label class="option"><input type="radio" name="q2" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Mostly accurate, minor debatable choices</span></label>
+        <label class="option"><input type="radio" name="q2" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Some errors that affect understanding</span></label>
+        <label class="option"><input type="radio" name="q2" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Multiple errors causing real misunderstandings</span></label>
+        <label class="option"><input type="radio" name="q2" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Nearly all terminology is wrong or unprofessional</span></label>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="card" data-q="3">
+      <div class="question"><span class="q-num">3</span>How well is the translation adapted to the target culture and conventions?</div>
+      <div class="scale-label">5 = Perfectly adapted &nbsp;|&nbsp; 1 = Fully disconnected</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q3" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Fully localized; reads as originally written</span></label>
+        <label class="option"><input type="radio" name="q3" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Mostly adapted, a few stiff expressions</span></label>
+        <label class="option"><input type="radio" name="q3" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Partially adapted; some literal translation feel</span></label>
+        <label class="option"><input type="radio" name="q3" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Poor adaptation; obviously foreign in tone</span></label>
+        <label class="option"><input type="radio" name="q3" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Wholly literal; incomprehensible to local readers</span></label>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="card" data-q="4">
+      <div class="question"><span class="q-num">4</span>How well does the translation match the typical format conventions of the target language?</div>
+      <div class="scale-label">5 = Fully compliant &nbsp;|&nbsp; 1 = Completely mismatched</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q4" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">All formats correct (e.g. separators, decimals, date order, punctuation style)</span></label>
+        <label class="option"><input type="radio" name="q4" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Mostly correct; minor formatting deviations</span></label>
+        <label class="option"><input type="radio" name="q4" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Some conventions violated (e.g. wrong thousand separators, date order, or punctuation)</span></label>
+        <label class="option"><input type="radio" name="q4" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Several format mismatches causing noticeable confusion</span></label>
+        <label class="option"><input type="radio" name="q4" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Format conventions almost entirely ignored</span></label>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="card" data-q="5">
+      <div class="question"><span class="q-num">5</span>How consistent is the tone and style with the original?</div>
+      <div class="scale-label">5 = Fully consistent &nbsp;|&nbsp; 1 = Completely different tone</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q5" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Tone, formality, and style fully match the original</span></label>
+        <label class="option"><input type="radio" name="q5" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Broadly consistent; slight deviations here and there</span></label>
+        <label class="option"><input type="radio" name="q5" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Some inconsistencies (e.g. formal text feels casual)</span></label>
+        <label class="option"><input type="radio" name="q5" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Major tone/style differences that distract</span></label>
+        <label class="option"><input type="radio" name="q5" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Completely off-tone (e.g. academic content reads like a blog post)</span></label>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="card" data-q="6">
+      <div class="question"><span class="q-num">6</span>Did you notice any omissions or mistranslations?</div>
+      <div class="scale-label">5 = None at all &nbsp;|&nbsp; 1 = Many serious errors</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q6" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">No omissions or mistranslations detected</span></label>
+        <label class="option"><input type="radio" name="q6" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Very rare minor errors; nothing that affects comprehension</span></label>
+        <label class="option"><input type="radio" name="q6" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">A few omissions or mistranslations</span></label>
+        <label class="option"><input type="radio" name="q6" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Several errors that meaningfully affect the content</span></label>
+        <label class="option"><input type="radio" name="q6" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Extensive omissions or mistranslations throughout</span></label>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="card" data-q="7">
+      <div class="question"><span class="q-num">7</span>How well are punctuation and formatting handled?</div>
+      <div class="scale-label">5 = Fully correct &nbsp;|&nbsp; 1 = Severely incorrect</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q7" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Punctuation, spacing, and layout are fully correct</span></label>
+        <label class="option"><input type="radio" name="q7" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Mostly correct; one or two small issues</span></label>
+        <label class="option"><input type="radio" name="q7" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Noticeable punctuation or formatting problems</span></label>
+        <label class="option"><input type="radio" name="q7" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Many errors that interfere with reading</span></label>
+        <label class="option"><input type="radio" name="q7" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Virtually no punctuation/formatting rules are followed</span></label>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="card" data-q="8">
+      <div class="question"><span class="q-num">8</span>How easy is this translation to read in the target language?</div>
+      <div class="scale-label">5 = Very easy &nbsp;|&nbsp; 1 = Very difficult</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q8" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Effortless to read from start to finish</span></label>
+        <label class="option"><input type="radio" name="q8" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Smooth reading; occasional pause to interpret</span></label>
+        <label class="option"><input type="radio" name="q8" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Readable but requires some concentration</span></label>
+        <label class="option"><input type="radio" name="q8" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Difficult to read; often needs rereading</span></label>
+        <label class="option"><input type="radio" name="q8" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Barely readable at all</span></label>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="card" data-q="9">
+      <div class="question"><span class="q-num">9</span>What is your overall satisfaction with this translation?</div>
+      <div class="scale-label">5 = Very satisfied &nbsp;|&nbsp; 1 = Very dissatisfied</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q9" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Excellent — exceeds expectations</span></label>
+        <label class="option"><input type="radio" name="q9" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Satisfied — meets expectations</span></label>
+        <label class="option"><input type="radio" name="q9" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Acceptable — room for improvement</span></label>
+        <label class="option"><input type="radio" name="q9" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Dissatisfied — significant issues</span></label>
+        <label class="option"><input type="radio" name="q9" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">Very dissatisfied — needs major revision or re-translation</span></label>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="card" data-q="10">
+      <div class="question"><span class="q-num">10</span>Would you continue using this AI translation service at <strong>$0.10 / media minute</strong>?</div>
+      <div class="scale-label">5 = Definitely yes &nbsp;|&nbsp; 1 = Definitely not</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q10" value="5" onchange="updateProgress()"><span class="option-label">5</span><span class="option-text">Absolutely — great value at this price</span></label>
+        <label class="option"><input type="radio" name="q10" value="4" onchange="updateProgress()"><span class="option-label">4</span><span class="option-text">Yes, likely — good value</span></label>
+        <label class="option"><input type="radio" name="q10" value="3" onchange="updateProgress()"><span class="option-label">3</span><span class="option-text">Maybe — depends on the specific project</span></label>
+        <label class="option"><input type="radio" name="q10" value="2" onchange="updateProgress()"><span class="option-label">2</span><span class="option-text">Probably not — quality/price feels off</span></label>
+        <label class="option"><input type="radio" name="q10" value="1" onchange="updateProgress()"><span class="option-label">1</span><span class="option-text">No — not worth it at any price given current quality</span></label>
+      </div>
+    </div>
+
+    <button type="button" class="submit-btn" id="submitButton" onclick="submitSurvey()">Submit Survey</button>
+  </form>
+
+  <div id="thankYou" class="thank-you hidden">
+    <h2>✅ Thank You!</h2>
+    <p>Your feedback has been submitted and will be used to improve our AI translation quality assessment.</p>
+  </div>
+
+</div>
+
+<script>
+  const totalQuestions = 10;
+
+  function updateProgress() {
+    let answered = 0;
+    // Name is optional, doesn't count toward progress
+    const lang = document.getElementById('langInput').value.trim();
+    if (lang.length > 0) answered++;
+    for (let i = 1; i <= totalQuestions; i++) {
+      const sel = document.querySelector('input[name="q' + i + '"]:checked');
+      if (sel) answered++;
+    }
+    const pct = Math.round((answered / (totalQuestions + 1)) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').textContent = answered + ' / ' + (totalQuestions + 1) + ' questions completed';
+  }
+
+  function getQuestionText(index) {
+    const question = document.querySelector('.card[data-q="' + index + '"] .question');
+    if (!question) return 'Question ' + index;
+    return question.textContent.replace(/^\s*\d+\s*/, '').trim();
+  }
+
+  function getAnswerText(index) {
+    const selected = document.querySelector('input[name="q' + index + '"]:checked');
+    if (!selected) return '';
+    const option = selected.closest('.option');
+    const answerText = option ? option.querySelector('.option-text').textContent.trim() : '';
+    return selected.value + ' - ' + answerText;
+  }
+
+  function buildSurveyAnswers() {
+    const answers = [];
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = document.querySelector('input[name="q' + i + '"]:checked');
+      answers.push({
+        index: i,
+        question: getQuestionText(i),
+        value: parseInt(selected.value),
+        answer: getAnswerText(i)
+      });
+    }
+    return answers;
+  }
+
+  async function submitSurvey() {
+    const name = document.getElementById('nameInput').value.trim();
+    const lang = document.getElementById('langInput').value.trim();
+    const submitButton = document.getElementById('submitButton');
+    if (!lang) {
+      alert('Please fill in the target language before submitting.');
+      return;
+    }
+    let answered = 1; // language counts as 1; name is optional
+    for (let i = 1; i <= totalQuestions; i++) {
+      const sel = document.querySelector('input[name="q' + i + '"]:checked');
+      if (sel) answered++;
+    }
+
+    if (answered < totalQuestions + 1) {
+      alert('Please complete all ' + (totalQuestions + 1) + ' questions before submitting (currently ' + answered + ' answered).');
+      return;
+    }
+
+    let score = 0;
+    for (let i = 1; i <= totalQuestions; i++) {
+      score += parseInt(document.querySelector('input[name="q' + i + '"]:checked').value);
+    }
+
+    const avg = (score / totalQuestions).toFixed(1);
+    let label = '';
+    if (avg >= 4.5) label = '🌟 Outstanding — translation quality is excellent';
+    else if (avg >= 3.5) label = '👍 Good — overall satisfactory';
+    else if (avg >= 2.5) label = '⚠️ Fair — some issues need attention';
+    else if (avg >= 1.5) label = '👎 Poor — significant quality issues';
+    else label = '❌ Very Poor — requires major revision';
+
+    const nameDisplay = name ? name : 'Anonymous';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
+
+    try {
+      const response = await fetch('https://fjbneekayzumthvigehp.functions.supabase.co/website-survey', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          target_language: lang,
+          website: document.getElementById('websiteInput').value,
+          answers: buildSurveyAnswers(),
+          metadata: {
+            page_url: window.location.href,
+            referrer: document.referrer,
+            user_agent: navigator.userAgent
+          }
+        })
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.submitted) {
+        throw new Error(result.error || 'Submission failed.');
+      }
+
+      if (typeof window.plausible === 'function') {
+        window.plausible('Translation quality survey submitted', {
+          props: {
+            target_language: lang,
+            score: result.score || score,
+            average: result.average || avg
+          }
+        });
+      }
+
+      document.getElementById('surveyForm').classList.add('hidden');
+      const thankYou = document.getElementById('thankYou');
+      thankYou.classList.remove('hidden');
+      thankYou.innerHTML = '<h2>✅ Thank You!</h2><p>Your feedback has been submitted.<br><br>Name: <strong>' + nameDisplay + '</strong><br>Target language: <strong>' + lang + '</strong><br>Score: <strong>' + score + ' / ' + (totalQuestions * 5) + '</strong> (avg <strong>' + avg + '</strong>)<br><br>' + label + '<br><br><em>$0.10 / media minute — discounted rate</em></p>';
+    } catch (error) {
+      alert(error.message || 'Submission failed. Please try again.');
+      submitButton.disabled = false;
+      submitButton.textContent = 'Submit Survey';
+    }
+  }
+
+  updateProgress();
+</script>
+
+</body>
+</html>
