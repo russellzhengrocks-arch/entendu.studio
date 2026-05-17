@@ -513,7 +513,7 @@
       document.getElementById('surveyForm').classList.add('hidden');
       const thankYou = document.getElementById('thankYou');
       thankYou.classList.remove('hidden');
-      thankYou.innerHTML = '<h2>✅ Thank You!</h2><p>Your feedback has been submitted.<br><br>Name: <strong>' + nameDisplay + '</strong><br>Target language: <strong>' + lang + '</strong><br>Score: <strong>' + score + ' / ' + (totalQuestions * 5) + '</strong> (avg <strong>' + avg + '</strong>)<br><br>' + label + '<br><br><em>$0.10 / media minute — discounted rate</em></p>';
+      thankYou.innerHTML = '<h2>✅ Thank You!</h2><p>Your feedback has been submitted.<br><br>Name: <strong>' + nameDisplay + '</strong><br>Target language: <strong>' + lang + '</strong><br>Score: <strong>' + score + ' / ' + (totalQuestions * 5) + '</strong> (avg <strong>' + avg + '</strong>)<br><br>' + label + '</p>';
     } catch (error) {
       alert(error.message || 'Submission failed. Please try again.');
       submitButton.disabled = false;
