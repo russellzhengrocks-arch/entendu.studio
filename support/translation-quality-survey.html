@@ -150,6 +150,11 @@
     color: #aaa;
   }
 
+  select.text-input {
+    cursor: pointer;
+    background: #fff;
+  }
+
   .input-hint {
     font-size: 12px;
     color: #888;
@@ -236,7 +241,7 @@
     <p>This questionnaire helps us understand your experience with the translated content and improve our AI translation service.</p>
   </header>
 
-  <div class="progress-text" id="progressText">0 / 10 questions completed</div>
+  <div class="progress-text" id="progressText">0 / 11 questions completed</div>
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar" style="width: 0%"></div>
   </div>
@@ -244,16 +249,71 @@
   <form id="surveyForm" onsubmit="return false;">
     <input type="text" id="websiteInput" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
 
-    <!-- Language Input -->
+    <!-- Contact and Language Input -->
     <div class="card">
-      <div class="question"><span class="q-num" style="background:#0071e3;">&nbsp;</span>Your Name & Target Language</div>
+      <div class="question"><span class="q-num" style="background:#0071e3;">&nbsp;</span>Your Name, Email & Target Language</div>
       <div class="input-hint">Your name (optional)</div>
       <div class="text-input-wrap">
         <input type="text" class="text-input" id="nameInput" placeholder="e.g. John Smith" oninput="updateProgress()">
       </div>
+      <div class="input-hint" style="margin-top:14px;">Email address (optional, for follow-up)</div>
+      <div class="text-input-wrap">
+        <input type="email" class="text-input" id="emailInput" placeholder="e.g. you@example.com">
+      </div>
       <div class="input-hint" style="margin-top:14px;">Target language you are evaluating</div>
       <div class="text-input-wrap">
-        <input type="text" class="text-input" id="langInput" placeholder="e.g. Chinese, Japanese, French, Spanish..." oninput="updateProgress()">
+        <select class="text-input" id="langInput" onchange="updateProgress()">
+          <option value="">Select target language</option>
+          <option value="Afrikaans" data-code="af">Afrikaans</option>
+          <option value="Arabic" data-code="ar">Arabic</option>
+          <option value="Basque" data-code="eu">Basque</option>
+          <option value="Bengali" data-code="bn">Bengali</option>
+          <option value="Bulgarian" data-code="bg">Bulgarian</option>
+          <option value="Catalan" data-code="ca">Catalan</option>
+          <option value="Chinese Simplified" data-code="zh-Hans">Chinese Simplified</option>
+          <option value="Chinese Traditional" data-code="zh-Hant">Chinese Traditional</option>
+          <option value="Croatian" data-code="hr">Croatian</option>
+          <option value="Czech" data-code="cs">Czech</option>
+          <option value="Danish" data-code="da">Danish</option>
+          <option value="Dutch" data-code="nl">Dutch</option>
+          <option value="Filipino" data-code="fil">Filipino</option>
+          <option value="Finnish" data-code="fi">Finnish</option>
+          <option value="French (France)" data-code="fr-FR">French (France)</option>
+          <option value="Galician" data-code="gl">Galician</option>
+          <option value="German" data-code="de">German</option>
+          <option value="Greek" data-code="el">Greek</option>
+          <option value="Hebrew" data-code="he">Hebrew</option>
+          <option value="Hindi" data-code="hi">Hindi</option>
+          <option value="Hungarian" data-code="hu">Hungarian</option>
+          <option value="Icelandic" data-code="is">Icelandic</option>
+          <option value="Indonesian" data-code="id">Indonesian</option>
+          <option value="Irish" data-code="ga">Irish</option>
+          <option value="Italian" data-code="it">Italian</option>
+          <option value="Japanese" data-code="ja">Japanese</option>
+          <option value="Kannada" data-code="kn">Kannada</option>
+          <option value="Korean" data-code="ko">Korean</option>
+          <option value="Malay" data-code="ms">Malay</option>
+          <option value="Malayalam" data-code="ml">Malayalam</option>
+          <option value="Marathi" data-code="mr">Marathi</option>
+          <option value="Northern Sami" data-code="se">Northern Sami</option>
+          <option value="Norwegian" data-code="no">Norwegian</option>
+          <option value="Polish" data-code="pl">Polish</option>
+          <option value="Portuguese (Portugal)" data-code="pt-PT">Portuguese (Portugal)</option>
+          <option value="Romanian" data-code="ro">Romanian</option>
+          <option value="Russian" data-code="ru">Russian</option>
+          <option value="Serbian" data-code="sr">Serbian</option>
+          <option value="Slovak" data-code="sk">Slovak</option>
+          <option value="Spanish" data-code="es">Spanish</option>
+          <option value="Swedish" data-code="sv">Swedish</option>
+          <option value="Tamil" data-code="ta">Tamil</option>
+          <option value="Telugu" data-code="te">Telugu</option>
+          <option value="Thai" data-code="th">Thai</option>
+          <option value="Turkish" data-code="tr">Turkish</option>
+          <option value="Ukrainian" data-code="uk">Ukrainian</option>
+          <option value="Vietnamese" data-code="vi">Vietnamese</option>
+          <option value="Welsh" data-code="cy">Welsh</option>
+          <option value="Zulu" data-code="zu">Zulu</option>
+        </select>
       </div>
     </div>
 
@@ -428,6 +488,18 @@
     return selected.value + ' - ' + answerText;
   }
 
+  function escapeHtml(text) {
+    return String(text ?? '').replace(/[&<>"']/g, function(char) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[char];
+    });
+  }
+
   function buildSurveyAnswers() {
     const answers = [];
     for (let i = 1; i <= totalQuestions; i++) {
@@ -444,10 +516,17 @@
 
   async function submitSurvey() {
     const name = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    const languageSelect = document.getElementById('langInput');
     const lang = document.getElementById('langInput').value.trim();
+    const targetLanguageCode = languageSelect.selectedOptions[0]?.dataset.code || '';
     const submitButton = document.getElementById('submitButton');
     if (!lang) {
-      alert('Please fill in the target language before submitting.');
+      alert('Please choose the target language before submitting.');
+      return;
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address, or leave it blank.');
       return;
     }
     let answered = 1; // language counts as 1; name is optional
@@ -475,6 +554,7 @@
     else label = '❌ Very Poor — requires major revision';
 
     const nameDisplay = name ? name : 'Anonymous';
+    const emailLine = email ? '<br>Email: <strong>' + escapeHtml(email) + '</strong>' : '';
     submitButton.disabled = true;
     submitButton.textContent = 'Submitting...';
 
@@ -484,7 +564,9 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
+          email,
           target_language: lang,
+          target_language_code: targetLanguageCode,
           website: document.getElementById('websiteInput').value,
           answers: buildSurveyAnswers(),
           metadata: {
@@ -513,7 +595,7 @@
       document.getElementById('surveyForm').classList.add('hidden');
       const thankYou = document.getElementById('thankYou');
       thankYou.classList.remove('hidden');
-      thankYou.innerHTML = '<h2>✅ Thank You!</h2><p>Your feedback has been submitted.<br><br>Name: <strong>' + nameDisplay + '</strong><br>Target language: <strong>' + lang + '</strong><br>Score: <strong>' + score + ' / ' + (totalQuestions * 5) + '</strong> (avg <strong>' + avg + '</strong>)<br><br>' + label + '</p>';
+      thankYou.innerHTML = '<h2>✅ Thank You!</h2><p>Your feedback has been submitted.<br><br>Name: <strong>' + escapeHtml(nameDisplay) + '</strong>' + emailLine + '<br>Target language: <strong>' + escapeHtml(lang) + '</strong><br>Score: <strong>' + score + ' / ' + (totalQuestions * 5) + '</strong> (avg <strong>' + avg + '</strong>)<br><br>' + escapeHtml(label) + '</p>';
     } catch (error) {
       alert(error.message || 'Submission failed. Please try again.');
       submitButton.disabled = false;
