@@ -200,6 +200,25 @@ input {
     transform: translate(-50%, 0);
 }
 
+.footer-support .support-menu {
+    top: auto;
+    right: 0;
+    bottom: calc(100% + 14px);
+    left: auto;
+    transform: translate(0, 4px);
+}
+
+.footer-support .support-menu::before {
+    top: 100%;
+    bottom: auto;
+}
+
+.footer-support:hover .support-menu,
+.footer-support:focus-within .support-menu,
+.footer-support.is-open .support-menu {
+    transform: translate(0, 0);
+}
+
 .nav-cta,
 .button {
     display: inline-flex;
@@ -3197,7 +3216,9 @@ input {
     font-size: 13px;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links .nav-support-trigger:hover,
+.footer-links .nav-support.is-open .nav-support-trigger {
     color: var(--text);
 }
 
