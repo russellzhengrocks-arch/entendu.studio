@@ -213,22 +213,60 @@ function setupSupportMenu() {
     });
 }
 
-function trackSiteEvent(name, props = {}) {
+function trackSiteEvent(name, props = {}, callback = null) {
+    let handled = false;
+    const done = () => {
+        if (handled) return;
+        handled = true;
+        if (typeof callback === "function") callback();
+    };
+
     if (typeof window.plausible === "function") {
-        window.plausible(name, { props });
+        window.plausible(name, {
+            props,
+            callback: done
+        });
     }
     if (typeof window.umami === "object" && typeof window.umami.track === "function") {
         window.umami.track(name, props);
+    }
+    if (typeof window.plausible !== "function" && typeof callback === "function") {
+        window.setTimeout(done, 0);
     }
 }
 
 function setupTrackedEvents() {
     document.querySelectorAll("[data-track-event]").forEach((element) => {
-        element.addEventListener("click", () => {
-            trackSiteEvent(element.dataset.trackEvent, {
+        element.addEventListener("click", (event) => {
+            const href = element.getAttribute("href") || "";
+            const props = {
                 href: element.getAttribute("href") || "",
                 label: element.textContent.trim().replace(/\s+/g, " ")
-            });
+            };
+            const shouldDelayNavigation = element.dataset.trackWait === "true"
+                && element.tagName === "A"
+                && href
+                && !event.metaKey
+                && !event.ctrlKey
+                && !event.shiftKey
+                && !event.altKey
+                && element.getAttribute("target") !== "_blank";
+
+            if (!shouldDelayNavigation) {
+                trackSiteEvent(element.dataset.trackEvent, props);
+                return;
+            }
+
+            event.preventDefault();
+            let navigated = false;
+            const navigate = () => {
+                if (navigated) return;
+                navigated = true;
+                window.location.href = href;
+            };
+
+            trackSiteEvent(element.dataset.trackEvent, props, navigate);
+            window.setTimeout(navigate, 350);
         });
     });
 }
