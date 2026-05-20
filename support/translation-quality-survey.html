@@ -150,6 +150,12 @@
     color: #aaa;
   }
 
+  textarea.text-input {
+    min-height: 120px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+
   select.text-input {
     cursor: pointer;
     background: #fff;
@@ -241,7 +247,7 @@
     <p>This questionnaire helps us understand your experience with the translated content and improve our AI translation service.</p>
   </header>
 
-  <div class="progress-text" id="progressText">0 / 11 questions completed</div>
+  <div class="progress-text" id="progressText">0 / 12 items completed</div>
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar" style="width: 0%"></div>
   </div>
@@ -447,6 +453,14 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="question"><span class="q-num" style="background:#0071e3;">&nbsp;</span>Additional comment</div>
+      <div class="input-hint">Required before submitting</div>
+      <div class="text-input-wrap">
+        <textarea class="text-input" id="commentInput" maxlength="2000" placeholder="Tell us what worked, what broke, or what should improve." oninput="updateProgress()" required></textarea>
+      </div>
+    </div>
+
     <button type="button" class="submit-btn" id="submitButton" onclick="submitSurvey()">Submit Survey</button>
   </form>
 
@@ -459,19 +473,22 @@
 
 <script>
   const totalQuestions = 10;
+  const totalRequiredItems = totalQuestions + 2;
 
   function updateProgress() {
     let answered = 0;
-    // Name is optional, doesn't count toward progress
+    // Name and email are optional, so only language, comment, and ratings count toward progress.
     const lang = document.getElementById('langInput').value.trim();
+    const comment = document.getElementById('commentInput').value.trim();
     if (lang.length > 0) answered++;
+    if (comment.length > 0) answered++;
     for (let i = 1; i <= totalQuestions; i++) {
       const sel = document.querySelector('input[name="q' + i + '"]:checked');
       if (sel) answered++;
     }
-    const pct = Math.round((answered / (totalQuestions + 1)) * 100);
+    const pct = Math.round((answered / totalRequiredItems) * 100);
     document.getElementById('progressBar').style.width = pct + '%';
-    document.getElementById('progressText').textContent = answered + ' / ' + (totalQuestions + 1) + ' questions completed';
+    document.getElementById('progressText').textContent = answered + ' / ' + totalRequiredItems + ' items completed';
   }
 
   function getQuestionText(index) {
@@ -520,23 +537,29 @@
     const languageSelect = document.getElementById('langInput');
     const lang = document.getElementById('langInput').value.trim();
     const targetLanguageCode = languageSelect.selectedOptions[0]?.dataset.code || '';
+    const comment = document.getElementById('commentInput').value.trim();
     const submitButton = document.getElementById('submitButton');
     if (!lang) {
       alert('Please choose the target language before submitting.');
+      return;
+    }
+    if (!comment) {
+      alert('Please add a comment before submitting.');
+      document.getElementById('commentInput').focus();
       return;
     }
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       alert('Please enter a valid email address, or leave it blank.');
       return;
     }
-    let answered = 1; // language counts as 1; name is optional
+    let answered = 2; // language and comment count; name and email are optional
     for (let i = 1; i <= totalQuestions; i++) {
       const sel = document.querySelector('input[name="q' + i + '"]:checked');
       if (sel) answered++;
     }
 
-    if (answered < totalQuestions + 1) {
-      alert('Please complete all ' + (totalQuestions + 1) + ' questions before submitting (currently ' + answered + ' answered).');
+    if (answered < totalRequiredItems) {
+      alert('Please complete all ' + totalRequiredItems + ' required items before submitting (currently ' + answered + ' completed).');
       return;
     }
 
@@ -567,6 +590,7 @@
           email,
           target_language: lang,
           target_language_code: targetLanguageCode,
+          comment,
           website: document.getElementById('websiteInput').value,
           answers: buildSurveyAnswers(),
           metadata: {
