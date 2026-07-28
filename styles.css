@@ -2883,6 +2883,17 @@ input {
     display: block;
 }
 
+.pricing-primary-actions {
+    margin-top: clamp(26px, 3vh, 36px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 12px;
+}
+
+.pricing-primary-actions .button {
+    width: 100%;
+}
+
 .pricing-alternatives h3 {
     margin: 0 0 clamp(28px, 4vh, 46px);
     padding-bottom: clamp(24px, 3vh, 36px);
@@ -2908,7 +2919,7 @@ input {
     gap: 26px;
     align-items: start;
     min-height: 118px;
-    padding: 28px 0;
+    padding: 28px 18px;
     border-bottom: 1px solid rgba(231, 233, 236, 0.075);
 }
 
@@ -2917,9 +2928,36 @@ input {
 }
 
 .pricing-row.is-featured {
-    margin-inline: -18px;
-    padding-inline: 18px;
-    background: linear-gradient(90deg, rgba(231, 233, 236, 0.045), rgba(231, 233, 236, 0.018));
+    min-height: 112px;
+    padding: 22px 18px 18px;
+    grid-template-columns: 102px minmax(0, 1fr) auto;
+    grid-template-areas:
+        "price title discount"
+        "subtitle subtitle .";
+    column-gap: 18px;
+    row-gap: 10px;
+    border: 1px solid rgba(231, 233, 236, 0.1);
+    border-radius: 14px;
+    background: rgba(231, 233, 236, 0.035);
+}
+
+.pricing-row.is-featured > strong {
+    grid-area: price;
+}
+
+.pricing-row.is-featured > div {
+    grid-area: title;
+    align-self: center;
+}
+
+.pricing-row.is-featured > p {
+    grid-area: subtitle;
+    align-self: end;
+    margin-top: 0;
+}
+
+.pricing-row.is-featured > .pricing-discount {
+    grid-area: discount;
 }
 
 .pricing-row strong {
@@ -2940,6 +2978,26 @@ input {
     line-height: 1.12;
 }
 
+.pricing-popular {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    margin-left: 10px;
+    padding: 1px 10px 0;
+    border: 1px solid rgba(231, 233, 236, 0.22);
+    border-radius: 999px;
+    color: rgba(231, 233, 236, 0.7);
+    background: transparent;
+    font-family: var(--mono);
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 760;
+    line-height: 1;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    vertical-align: 4px;
+}
+
 .pricing-row p {
     max-width: 470px;
     margin: 9px 0 0;
@@ -2950,9 +3008,18 @@ input {
 }
 
 .pricing-mark {
-    color: rgba(231, 233, 236, 0.44);
+    align-self: center;
+    padding: 4px 11px;
+    border: 1px solid rgba(231, 233, 236, 0.2);
+    border-radius: 999px;
+    color: rgba(231, 233, 236, 0.62);
     font-family: var(--mono);
-    font-size: 15px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    white-space: nowrap;
     text-decoration: none;
 }
 
@@ -2980,7 +3047,7 @@ input {
     position: absolute;
     left: 15%;
     right: 22%;
-    bottom: clamp(54px, 8vh, 86px);
+    bottom: clamp(8px, 1.5vh, 16px);
     display: flex;
     align-items: center;
     gap: 18px;
@@ -3507,14 +3574,21 @@ input {
         margin-bottom: 0;
     }
 
+    .pricing-primary-actions {
+        margin-top: 24px;
+        grid-template-columns: 1fr;
+    }
+
     .pricing-row {
         grid-template-columns: 74px minmax(0, 1fr);
         gap: 20px;
+        margin-inline: 0;
+        padding-inline: 18px;
     }
 
     .pricing-row.is-featured {
-        margin-inline: 0;
-        padding-inline: 0;
+        grid-template-columns: 74px minmax(0, 1fr) auto;
+        column-gap: 20px;
     }
 
     .pricing-mark,
@@ -3683,6 +3757,20 @@ input {
     .pricing-row {
         grid-template-columns: 1fr;
         gap: 12px;
+    }
+
+    .pricing-row.is-featured {
+        grid-template-columns: 74px minmax(0, 1fr);
+        grid-template-areas:
+            "price title"
+            "subtitle subtitle"
+            "discount discount";
+        column-gap: 16px;
+        row-gap: 10px;
+    }
+
+    .pricing-row.is-featured > .pricing-discount {
+        justify-self: start;
     }
 
     .pricing-mark,
