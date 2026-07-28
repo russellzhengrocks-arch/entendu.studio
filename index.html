@@ -42,20 +42,26 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "App Only",
-          "price": "49.00",
+          "name": "Lifetime License",
+          "price": "29.00",
           "priceCurrency": "USD"
         },
         {
           "@type": "Offer",
-          "name": "Starter",
-          "price": "89.00",
+          "name": "Starter AI Minutes Pack",
+          "price": "90.00",
           "priceCurrency": "USD"
         },
         {
           "@type": "Offer",
-          "name": "Studio",
-          "price": "149.00",
+          "name": "Pro AI Minutes Pack",
+          "price": "150.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Studio AI Minutes Pack",
+          "price": "300.00",
           "priceCurrency": "USD"
         }
       ],
@@ -5271,7 +5277,7 @@
 
         <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
             <div class="pricing-board" data-reveal>
-                <div class="pricing-primary">
+                <div class="pricing-primary" data-commerce-package="lifetime_29">
                     <p class="pricing-kicker">Pricing · the short version</p>
                     <h2 id="pricing-title">
                         <span>Own the tool.</span>
@@ -5279,49 +5285,50 @@
                         <span>Forever.</span>
                     </h2>
                     <div class="pricing-main-offer">
-                        <strong>$149</strong>
+                        <strong data-commerce-price>$29</strong>
                         <p>
                             <span>Once</span>
-                            <span>1,500 AI minutes included</span>
+                            <span>100 AI minutes included</span>
                             <span>Lifetime app license</span>
-                            <span>Refill anytime</span>
+                            <span>Offline tools forever</span>
                         </p>
                     </div>
+                    <a class="button button-primary" href="/app/?purchase=lifetime_29" data-commerce-checkout data-track-event="Buy lifetime $29">Buy Lifetime · $29</a>
                 </div>
 
                 <div class="pricing-alternatives">
-                    <p class="pricing-kicker">If you prefer a smaller bite</p>
-                    <h3>Two quieter doors into the same app.</h3>
-                    <div class="pricing-list" aria-label="Pricing plans">
-                        <article class="pricing-row">
-                            <strong>$49</strong>
+                    <p class="pricing-kicker">Refill AI minutes anytime</p>
+                    <h3>Choose the pace that fits your studio.</h3>
+                    <div class="pricing-list" aria-label="AI minutes refill packs">
+                        <article class="pricing-row" data-commerce-package="ai_minutes_starter_300">
+                            <strong data-commerce-price>$90</strong>
                             <div>
-                                <h4>App only</h4>
-                                <p>macOS license. No AI minutes. Add credits when a job needs them.</p>
+                                <h4>Starter Pack</h4>
+                                <p data-commerce-subtitle>300 AI minutes · $0.30/min.</p>
                             </div>
-                            <span class="pricing-mark">-</span>
+                            <a class="pricing-mark" href="/app/?purchase=ai_minutes_starter_300" data-commerce-checkout aria-label="Buy Starter Pack">Buy</a>
                         </article>
-                        <article class="pricing-row">
-                            <strong>$89</strong>
+                        <article class="pricing-row is-featured" data-commerce-package="ai_minutes_pro_600">
+                            <strong data-commerce-price>$150</strong>
                             <div>
-                                <h4>Starter</h4>
-                                <p>App + 500 AI minutes. After the app, minutes work out to $0.080/min.</p>
+                                <h4>Pro Pack · Popular</h4>
+                                <p data-commerce-subtitle>600 AI minutes · $0.25/min.</p>
                             </div>
-                            <span class="pricing-mark">-</span>
+                            <a class="pricing-discount" href="/app/?purchase=ai_minutes_pro_600" data-commerce-checkout aria-label="Buy Pro Pack">Save 17%</a>
                         </article>
-                        <article class="pricing-row is-featured">
-                            <strong>$149</strong>
+                        <article class="pricing-row" data-commerce-package="ai_minutes_studio_1500">
+                            <strong data-commerce-price>$300</strong>
                             <div>
-                                <h4>Studio</h4>
-                                <p>App + 1,500 AI minutes. Translation, QA, captions, the full pipeline.</p>
+                                <h4>Studio Pack</h4>
+                                <p data-commerce-subtitle>1,500 AI minutes · $0.20/min.</p>
                             </div>
-                            <span class="pricing-discount">78% off</span>
+                            <a class="pricing-discount" href="/app/?purchase=ai_minutes_studio_1500" data-commerce-checkout aria-label="Buy Studio Pack">Save 33%</a>
                         </article>
                     </div>
                 </div>
                 <p class="pricing-trial-note"><span><strong>7-day trial</strong> with 30 AI minutes — full pipeline.</span></p>
             </div>
-            <p class="pricing-credit-line">À la carte · captions $0.02 / QA $0.08 / translate $0.20 / min · full pipeline $0.30</p>
+            <p class="pricing-credit-line">AI minutes are translation-equivalent · translation 1.0× · QA 0.4× · captioning and alignment 0.1× · billed to the second</p>
         </section>
 
         <section class="download-section" id="download" aria-labelledby="download-title">

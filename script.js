@@ -57,6 +57,56 @@ const demoLines = [
 ];
 
 const introSrc = "assets/intro/entendu-promo-standalone.html?autoplay=1";
+const commercePublicEndpoint = "https://fjbneekayzumthvigehp.functions.supabase.co/commerce-public";
+
+function formatCommercePrice(amountCents, currency) {
+    if (!Number.isFinite(amountCents)) return null;
+    try {
+        return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: String(currency || "usd").toUpperCase(),
+            maximumFractionDigits: amountCents % 100 === 0 ? 0 : 2
+        }).format(amountCents / 100);
+    } catch {
+        return `$${(amountCents / 100).toFixed(amountCents % 100 === 0 ? 0 : 2)}`;
+    }
+}
+
+async function setupRemoteCommerce() {
+    const packageRoots = document.querySelectorAll("[data-commerce-package]");
+    if (!packageRoots.length) return;
+
+    try {
+        const response = await fetch(commercePublicEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: "{}"
+        });
+        if (!response.ok) return;
+
+        const payload = await response.json();
+        const packages = payload?.commerce?.packages;
+        if (!Array.isArray(packages)) return;
+        const packagesByID = new Map(packages.map((item) => [item?.id, item]));
+
+        packageRoots.forEach((root) => {
+            const item = packagesByID.get(root.dataset.commercePackage);
+            if (!item) return;
+
+            const price = formatCommercePrice(Number(item.amount_cents), item.currency);
+            const priceNode = root.querySelector("[data-commerce-price]");
+            if (priceNode && price) priceNode.textContent = price;
+
+            const subtitleNode = root.querySelector("[data-commerce-subtitle]");
+            if (subtitleNode && item.subtitle) subtitleNode.textContent = item.subtitle;
+
+            const checkout = root.querySelector("[data-commerce-checkout]");
+            if (checkout) checkout.href = `/app/?purchase=${encodeURIComponent(item.id)}`;
+        });
+    } catch {
+        // Static pricing remains the resilient fallback when remote config is unavailable.
+    }
+}
 
 function updateNav() {
     if (!nav) return;
@@ -939,4 +989,5 @@ setupDemoVideo();
 setupAiGlow();
 setupAiPoweredSound();
 setupPlayground();
+setupRemoteCommerce();
 startDemoCaptionLoop();
