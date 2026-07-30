@@ -263,25 +263,9 @@ function setupSupportMenu() {
     });
 }
 
-function trackSiteEvent(name, props = {}, callback = null) {
-    let handled = false;
-    const done = () => {
-        if (handled) return;
-        handled = true;
-        if (typeof callback === "function") callback();
-    };
-
-    if (typeof window.plausible === "function") {
-        window.plausible(name, {
-            props,
-            callback: done
-        });
-    }
-    if (typeof window.umami === "object" && typeof window.umami.track === "function") {
-        window.umami.track(name, props);
-    }
-    if (typeof window.plausible !== "function" && typeof callback === "function") {
-        window.setTimeout(done, 0);
+function trackSiteEvent(_name, _props = {}, callback = null) {
+    if (typeof callback === "function") {
+        window.setTimeout(callback, 0);
     }
 }
 

@@ -4,13 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Translation Quality Survey</title>
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-PXV7YHs-LmiGs1AX4wJH7.js"></script>
-<script>
-  window.plausible = window.plausible || function() { (plausible.q = plausible.q || []).push(arguments); };
-  plausible.init = plausible.init || function(options) { plausible.o = options || {}; };
-  plausible.init();
-</script>
+<!-- Privacy-friendly analytics by Cloudflare -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"19edb962afd24df3babc7e18e4d1aee8"}'></script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -604,16 +599,6 @@
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.submitted) {
         throw new Error(result.error || 'Submission failed.');
-      }
-
-      if (typeof window.plausible === 'function') {
-        window.plausible('Translation quality survey submitted', {
-          props: {
-            target_language: lang,
-            score: result.score || score,
-            average: result.average || avg
-          }
-        });
       }
 
       document.getElementById('surveyForm').classList.add('hidden');
