@@ -56,13 +56,27 @@ const demoLines = [
     "請十八號患者進來"
 ];
 
-const introSrc = "assets/intro/entendu-promo-standalone.html?autoplay=1";
 const commercePublicEndpoint = "https://fjbneekayzumthvigehp.functions.supabase.co/commerce-public";
+
+function i18nText(source, values = {}) {
+    if (window.EntenduI18n) return window.EntenduI18n.t(source, values);
+    return String(source).replace(/\{([^{}]+)\}/g, (match, key) => (
+        values[key] === undefined || values[key] === null ? match : String(values[key])
+    ));
+}
+
+function localizedIntroSrc() {
+    const url = new URL("assets/intro/entendu-promo-standalone.html", window.location.href);
+    url.searchParams.set("autoplay", "1");
+    const locale = window.EntenduI18n?.locale;
+    if (locale && locale !== "en") url.searchParams.set("lang", locale);
+    return `${url.pathname}${url.search}`;
+}
 
 function formatCommercePrice(amountCents, currency) {
     if (!Number.isFinite(amountCents)) return null;
     try {
-        return new Intl.NumberFormat("en-US", {
+        return new Intl.NumberFormat(window.EntenduI18n?.locale || navigator.language || "en-US", {
             style: "currency",
             currency: String(currency || "usd").toUpperCase(),
             maximumFractionDigits: amountCents % 100 === 0 ? 0 : 2
@@ -98,7 +112,10 @@ async function setupRemoteCommerce() {
             if (priceNode && price) priceNode.textContent = price;
 
             const subtitleNode = root.querySelector("[data-commerce-subtitle]");
-            if (subtitleNode && item.subtitle) subtitleNode.textContent = item.subtitle;
+            if (subtitleNode && item.subtitle) {
+                const localizedSource = item.subtitle.replace(/\s+·\s+save\s+\d+%\.?$/i, ".");
+                subtitleNode.textContent = i18nText(localizedSource);
+            }
 
             const checkout = root.querySelector("[data-commerce-checkout]");
             if (checkout) checkout.href = `/app/?purchase=${encodeURIComponent(item.id)}`;
@@ -186,7 +203,7 @@ function setupReveal() {
 
 function openIntroModal() {
     if (!introModal || !introFrame) return;
-    introFrame.src = introSrc;
+    introFrame.src = localizedIntroSrc();
     introModal.hidden = false;
     document.body.classList.add("is-intro-open");
 }
@@ -334,7 +351,7 @@ function setupPlaygroundLanguages() {
     playgroundLanguage.textContent = "";
     const placeholder = document.createElement("option");
     placeholder.value = "";
-    placeholder.textContent = "Select language";
+    placeholder.textContent = i18nText("Select language");
     placeholder.disabled = true;
     placeholder.hidden = true;
     playgroundLanguage.append(placeholder);
@@ -342,7 +359,7 @@ function setupPlaygroundLanguages() {
     languages.forEach((language) => {
         const option = document.createElement("option");
         option.value = language.code;
-        option.textContent = language.language;
+        option.textContent = i18nText(language.language);
         playgroundLanguage.append(option);
     });
 
@@ -362,9 +379,9 @@ function setupPlaygroundLanguages() {
         if (playgroundStarted) {
             const mode = playgroundDisplayMode === "idle" ? "qa" : playgroundDisplayMode;
             renderPlaygroundCues(mode);
-            setPlaygroundStatus(`${playgroundData.language} ready`);
+            setPlaygroundStatus(i18nText("{language} ready", { language: i18nText(playgroundData.language) }));
         } else {
-            setPlaygroundStatus(`${playgroundData.language} selected`);
+            setPlaygroundStatus(i18nText("{language} selected", { language: i18nText(playgroundData.language) }));
         }
     });
 }
@@ -604,7 +621,7 @@ function playPlaygroundVideoFromStart() {
     updatePlaygroundMuteControl();
     updatePlaygroundPlayback();
     playgroundVideo.play().catch(() => {});
-    if (playgroundPlay) playgroundPlay.textContent = "Pause";
+    if (playgroundPlay) playgroundPlay.textContent = i18nText("Pause");
 }
 
 function waitForPlaygroundVideoEnd() {
@@ -658,7 +675,7 @@ function qaForCue(cue) {
     const issues = [];
 
     if (durationError) {
-        issues.push("Duration under 1.0s");
+        issues.push(i18nText("Duration under 1.0s"));
     }
 
     const checks = [
@@ -704,7 +721,7 @@ function renderPlaygroundCues(mode = "qa") {
         timing.className = "cue-timecode";
         timing.textContent = `${formatPlaygroundTime(cue.start)} -> ${formatPlaygroundTime(cue.end)}`;
         timing.tabIndex = 0;
-        timing.title = "Download the app to edit subtitles.";
+        timing.title = i18nText("Download the app to edit subtitles.");
         timing.addEventListener("click", onSubtitleIntent);
         timing.addEventListener("keydown", (event) => {
             if (event.key !== "Enter" && event.key !== " ") return;
@@ -716,7 +733,11 @@ function renderPlaygroundCues(mode = "qa") {
         qaStatus.className = "qa-status";
         qaStatus.classList.toggle("is-pending", mode !== "qa");
         qaStatus.classList.toggle("is-error", mode === "qa" && qa.status === "Error");
-        qaStatus.textContent = isCaption ? (cue.type === "ost" ? "OST" : "Speech") : (isTranslate ? "Needs QA" : (qa.status === "Error" ? "Error" : `${qa.status} ${qa.duration}`));
+        qaStatus.textContent = isCaption
+            ? (cue.type === "ost" ? "OST" : i18nText("Speech"))
+            : (isTranslate
+                ? i18nText("Needs QA")
+                : (qa.status === "Error" ? i18nText("Error") : `${i18nText(qa.status)} ${qa.duration}`));
         meta.append(qaStatus);
 
         const translation = document.createElement("p");
@@ -724,7 +745,7 @@ function renderPlaygroundCues(mode = "qa") {
         translation.dir = "auto";
         translation.textContent = displayTranslation;
         translation.tabIndex = 0;
-        translation.title = "Download the app to edit subtitles.";
+        translation.title = i18nText("Download the app to edit subtitles.");
         translation.addEventListener("click", onSubtitleIntent);
         translation.addEventListener("keydown", (event) => {
             if (event.key !== "Enter" && event.key !== " ") return;
@@ -732,20 +753,20 @@ function renderPlaygroundCues(mode = "qa") {
         });
 
         if (isCaption) {
-            translation.setAttribute("aria-label", cue.type === "ost" ? "Caption detected as OST" : "Caption detected as speech");
+            translation.setAttribute("aria-label", i18nText(cue.type === "ost" ? "Caption detected as OST" : "Caption detected as speech"));
         }
 
         const source = document.createElement("p");
         source.className = "cue-source";
 
         const sourceLabel = document.createElement("span");
-        sourceLabel.textContent = isCaption ? "Detected text" : (cue.type === "ost" ? "Source OST" : "Source");
-        source.append(sourceLabel, document.createTextNode(isCaption ? (cue.type === "ost" ? "OST spotted" : "Dialogue spotted") : cue.source));
+        sourceLabel.textContent = i18nText(isCaption ? "Detected text" : (cue.type === "ost" ? "Source OST" : "Source"));
+        source.append(sourceLabel, document.createTextNode(isCaption ? i18nText(cue.type === "ost" ? "OST spotted" : "Dialogue spotted") : cue.source));
 
         if (isTranslate && displayTranslation !== cue.translation) {
             const issue = document.createElement("p");
             issue.className = "cue-issue";
-            issue.textContent = "QA will normalize punctuation / brackets";
+            issue.textContent = i18nText("QA will normalize punctuation / brackets");
             card.append(meta, translation, issue, source);
         } else if (mode === "qa" && qa.issues.length) {
             const issue = document.createElement("p");
@@ -795,9 +816,9 @@ function updatePlaygroundPlayback() {
 function updatePlaygroundMuteControl() {
     if (!playgroundMute || !playgroundVideo) return;
     const isMuted = playgroundVideo.muted || playgroundVideo.volume === 0;
-    const label = isMuted ? "Muted" : "Sound on";
+    const label = i18nText(isMuted ? "Muted" : "Sound on");
     playgroundMute.classList.toggle("is-unmuted", !isMuted);
-    playgroundMute.setAttribute("aria-label", isMuted ? "Unmute sample video" : "Mute sample video");
+    playgroundMute.setAttribute("aria-label", i18nText(isMuted ? "Unmute sample video" : "Mute sample video"));
     const text = playgroundMute.querySelector("b");
     if (text) text.textContent = label;
 }
@@ -853,12 +874,12 @@ async function startPlayground() {
     playgroundWorkbench.hidden = false;
     if (playgroundCues) playgroundCues.classList.add("is-waiting");
 
-    await runPlaygroundPass("caption", "caption", "Pass 1/3 · English captions and OST");
-    await runPlaygroundPass("translate", "translate", `Pass 2/3 · ${playgroundData.language} draft translation`);
-    await runPlaygroundPass("qa", "qa", "Pass 3/3 · QA-cleaned delivery");
-    setPlaygroundStatus(`${playgroundData.language} ready`);
+    await runPlaygroundPass("caption", "caption", i18nText("Pass 1/3 · English captions and OST"));
+    await runPlaygroundPass("translate", "translate", i18nText("Pass 2/3 · {language} draft translation", { language: i18nText(playgroundData.language) }));
+    await runPlaygroundPass("qa", "qa", i18nText("Pass 3/3 · QA-cleaned delivery"));
+    setPlaygroundStatus(i18nText("{language} ready", { language: i18nText(playgroundData.language) }));
 
-    if (playgroundPlay) playgroundPlay.textContent = "Play";
+    if (playgroundPlay) playgroundPlay.textContent = i18nText("Play");
 }
 
 function setupPlayground() {
@@ -866,7 +887,7 @@ function setupPlayground() {
     setupPlaygroundLanguages();
     playgroundApp?.classList.add("is-awaiting-language");
     playgroundApp?.classList.remove("is-language-selected");
-    setPlaygroundStatus("Choose target language");
+    setPlaygroundStatus(i18nText("Choose target language"));
     window.setTimeout(() => playgroundLanguage?.focus({ preventScroll: true }), 90);
 
     if (playgroundVideo) {
@@ -877,17 +898,17 @@ function setupPlayground() {
         playgroundVideo.addEventListener("loadedmetadata", updatePlaygroundPlayback);
         playgroundVideo.addEventListener("volumechange", updatePlaygroundMuteControl);
         playgroundVideo.addEventListener("ended", () => {
-            if (playgroundPlay) playgroundPlay.textContent = "Play";
+            if (playgroundPlay) playgroundPlay.textContent = i18nText("Play");
         });
     }
 
     if (playgroundCaption) {
-        playgroundCaption.title = "Download the app to edit subtitles.";
+        playgroundCaption.title = i18nText("Download the app to edit subtitles.");
         playgroundCaption.addEventListener("click", onSubtitleIntent);
     }
 
     if (playgroundTime) {
-        playgroundTime.title = "Download the app to edit subtitles.";
+        playgroundTime.title = i18nText("Download the app to edit subtitles.");
         playgroundTime.addEventListener("click", onSubtitleIntent);
     }
 
@@ -895,10 +916,10 @@ function setupPlayground() {
         playgroundPlay.addEventListener("click", () => {
             if (playgroundVideo.paused) {
                 playgroundVideo.play().catch(() => {});
-                playgroundPlay.textContent = "Pause";
+                playgroundPlay.textContent = i18nText("Pause");
             } else {
                 playgroundVideo.pause();
-                playgroundPlay.textContent = "Play";
+                playgroundPlay.textContent = i18nText("Play");
             }
         });
     }
@@ -908,7 +929,7 @@ function setupPlayground() {
             playgroundVideo.muted = !playgroundVideo.muted;
             if (!playgroundVideo.muted && playgroundVideo.paused && playgroundStarted) {
                 playgroundVideo.play().catch(() => {});
-                if (playgroundPlay) playgroundPlay.textContent = "Pause";
+                if (playgroundPlay) playgroundPlay.textContent = i18nText("Pause");
             }
             updatePlaygroundMuteControl();
         });

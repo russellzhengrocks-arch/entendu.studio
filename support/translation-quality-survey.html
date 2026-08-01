@@ -466,9 +466,17 @@
 
 </div>
 
+<script src="../i18n.js?v=20260802-l10n1"></script>
 <script>
   const totalQuestions = 10;
   const totalRequiredItems = totalQuestions + 2;
+
+  function surveyText(source, values = {}) {
+    if (window.EntenduI18n) return window.EntenduI18n.t(source, values);
+    return String(source).replace(/\{([^{}]+)\}/g, (match, key) => (
+      values[key] === undefined || values[key] === null ? match : String(values[key])
+    ));
+  }
 
   function updateProgress() {
     let answered = 0;
@@ -483,7 +491,10 @@
     }
     const pct = Math.round((answered / totalRequiredItems) * 100);
     document.getElementById('progressBar').style.width = pct + '%';
-    document.getElementById('progressText').textContent = answered + ' / ' + totalRequiredItems + ' items completed';
+    document.getElementById('progressText').textContent = surveyText('{answered} / {totalRequiredItems} items completed', {
+      answered,
+      totalRequiredItems
+    });
   }
 
   function getQuestionText(index) {
@@ -535,16 +546,16 @@
     const comment = document.getElementById('commentInput').value.trim();
     const submitButton = document.getElementById('submitButton');
     if (!lang) {
-      alert('Please choose the target language before submitting.');
+      alert(surveyText('Please choose the target language before submitting.'));
       return;
     }
     if (!comment) {
-      alert('Please add a comment before submitting.');
+      alert(surveyText('Please add a comment before submitting.'));
       document.getElementById('commentInput').focus();
       return;
     }
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Please enter a valid email address, or leave it blank.');
+      alert(surveyText('Please enter a valid email address, or leave it blank.'));
       return;
     }
     let answered = 2; // language and comment count; name and email are optional
@@ -554,7 +565,10 @@
     }
 
     if (answered < totalRequiredItems) {
-      alert('Please complete all ' + totalRequiredItems + ' required items before submitting (currently ' + answered + ' completed).');
+      alert(surveyText('Please complete all {totalRequiredItems} required items before submitting (currently {answered} completed).', {
+        totalRequiredItems,
+        answered
+      }));
       return;
     }
 
@@ -565,16 +579,16 @@
 
     const avg = (score / totalQuestions).toFixed(1);
     let label = '';
-    if (avg >= 4.5) label = '🌟 Outstanding — translation quality is excellent';
-    else if (avg >= 3.5) label = '👍 Good — overall satisfactory';
-    else if (avg >= 2.5) label = '⚠️ Fair — some issues need attention';
-    else if (avg >= 1.5) label = '👎 Poor — significant quality issues';
-    else label = '❌ Very Poor — requires major revision';
+    if (avg >= 4.5) label = surveyText('🌟 Outstanding — translation quality is excellent');
+    else if (avg >= 3.5) label = surveyText('👍 Good — overall satisfactory');
+    else if (avg >= 2.5) label = surveyText('⚠️ Fair — some issues need attention');
+    else if (avg >= 1.5) label = surveyText('👎 Poor — significant quality issues');
+    else label = surveyText('❌ Very Poor — requires major revision');
 
-    const nameDisplay = name ? name : 'Anonymous';
-    const emailLine = email ? '<br>Email: <strong>' + escapeHtml(email) + '</strong>' : '';
+    const nameDisplay = name || '—';
+    const emailDisplay = email || '—';
     submitButton.disabled = true;
-    submitButton.textContent = 'Submitting...';
+    submitButton.textContent = surveyText('Submitting...');
 
     try {
       const response = await fetch('https://fjbneekayzumthvigehp.functions.supabase.co/website-survey', {
@@ -598,17 +612,30 @@
 
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.submitted) {
-        throw new Error(result.error || 'Submission failed.');
+        throw new Error(result.error || surveyText('Submission failed.'));
       }
 
       document.getElementById('surveyForm').classList.add('hidden');
       const thankYou = document.getElementById('thankYou');
       thankYou.classList.remove('hidden');
-      thankYou.innerHTML = '<h2>✅ Thank You!</h2><p>Your feedback has been submitted.<br><br>Name: <strong>' + escapeHtml(nameDisplay) + '</strong>' + emailLine + '<br>Target language: <strong>' + escapeHtml(lang) + '</strong><br>Score: <strong>' + score + ' / ' + (totalQuestions * 5) + '</strong> (avg <strong>' + avg + '</strong>)<br><br>' + escapeHtml(label) + '</p>';
+      thankYou.textContent = '';
+      const heading = document.createElement('h2');
+      heading.textContent = surveyText('✅ Thank You!');
+      const summary = document.createElement('p');
+      summary.textContent = surveyText('Your feedback has been submitted. Name: {name} Email: {email} Target language: {language} Score: {score} / {maximumScore} (avg {average}) {ratingLabel}', {
+        name: nameDisplay,
+        email: emailDisplay,
+        language: lang,
+        score,
+        maximumScore: totalQuestions * 5,
+        average: avg,
+        ratingLabel: label
+      });
+      thankYou.append(heading, summary);
     } catch (error) {
-      alert(error.message || 'Submission failed. Please try again.');
+      alert(surveyText(error.message || 'Submission failed. Please try again.'));
       submitButton.disabled = false;
-      submitButton.textContent = 'Submit Survey';
+      submitButton.textContent = surveyText('Submit Survey');
     }
   }
 
