@@ -97,11 +97,25 @@
         return Array.from(target);
     }
 
+    function sentenceSegments(target) {
+        return (String(target).match(/.*?(?:[.!?。！？]+(?:["'”’»）\]]*)|$)/gu) || [])
+            .map((segment) => segment.trim())
+            .filter(Boolean);
+    }
+
     function replaceTextPreservingMarkup(element, target) {
         const nodes = significantTextNodes(element);
         if (!nodes.length) return;
         if (nodes.length === 1) {
             nodes[0].nodeValue = target;
+            return;
+        }
+
+        const sentences = sentenceSegments(target);
+        if (sentences.length === nodes.length) {
+            nodes.forEach((node, index) => {
+                node.nodeValue = sentences[index];
+            });
             return;
         }
 
@@ -237,7 +251,15 @@
             .entendu-locale-switcher select{max-width:118px;min-height:30px;padding:4px 24px 4px 8px;border:1px solid rgba(255,255,255,.16);border-radius:999px;color:inherit;background:rgba(20,22,26,.88);font:600 11px/1.2 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
             .entendu-locale-switcher select:focus{outline:2px solid rgba(216,212,204,.48);outline-offset:2px}
             .entendu-locale-switcher.is-floating{position:fixed;top:18px;right:18px;padding:7px 9px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(17,19,23,.9);box-shadow:0 10px 30px rgba(0,0,0,.22);backdrop-filter:blur(16px)}
+            .pricing-main-offer>strong,.pricing-row>strong{white-space:nowrap}
+            .pricing-row{grid-template-columns:minmax(96px,max-content) minmax(0,1fr) auto;column-gap:clamp(14px,1.3vw,26px)}
+            .pricing-row.is-featured{grid-template-columns:minmax(102px,max-content) minmax(0,1fr) auto}
+            .pricing-row>div{min-width:0}
+            .pricing-row h4{overflow-wrap:anywhere}
+            :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) .pricing-primary h2{font-size:clamp(42px,3.7vw,60px);text-wrap:initial}
+            :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) .pricing-primary h2>*{white-space:nowrap}
             @media(max-width:980px){.entendu-locale-switcher.is-in-nav{position:fixed;right:16px;bottom:16px;padding:7px 9px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(17,19,23,.94);box-shadow:0 10px 30px rgba(0,0,0,.28)}}
+            @media(max-width:720px){.pricing-row,.pricing-row.is-featured{grid-template-columns:1fr}.pricing-primary h2>*{white-space:normal}}
         `;
         document.head.append(style);
     }

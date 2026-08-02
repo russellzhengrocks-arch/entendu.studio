@@ -79,6 +79,7 @@ function formatCommercePrice(amountCents, currency) {
         return new Intl.NumberFormat(window.EntenduI18n?.locale || navigator.language || "en-US", {
             style: "currency",
             currency: String(currency || "usd").toUpperCase(),
+            currencyDisplay: "narrowSymbol",
             maximumFractionDigits: amountCents % 100 === 0 ? 0 : 2
         }).format(amountCents / 100);
     } catch {
