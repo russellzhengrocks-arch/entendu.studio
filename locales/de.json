@@ -41,7 +41,7 @@
     "7-day trial with 30 AI minutes — full pipeline.": "7-Tage-Test mit 30 KI-Minuten — volle Pipeline.",
     "AI minutes are translation-equivalent · translation 1.0× · QA 0.4× · captioning and alignment 0.1× · billed to the second": "KI-Minuten sind übersetzungsäquivalent · Übersetzung 1,0× · QA 0,4× · Untertitelung und Ausrichtung 0,1× · sekundengenau abgerechnet",
     "Download · macOS 26.1+ · Apple Silicon & Intel": "Download · macOS 26.1+ · Apple Silicon & Intel",
-    "Run it on your own machine. Once.": "Auf dem eigenen Rechner. Einmal genügt.",
+    "Run it on your own machine. Once.": "Auf dem eigenen Rechner. Einmal kaufen.",
     "Try the full pipeline for seven days on a real source. When you're ready, buy a lifetime license from inside the app.": "Teste die volle Pipeline sieben Tage an echtem Material. Wenn du bereit bist, kaufe die Lebenslizenz in der App.",
     "Release notes": "Versionshinweise",
     "Download for macOS 35 MB · ZIP": "Download für macOS 35 MB · ZIP",
@@ -369,6 +369,9 @@
     "Target language": "Zielsprache",
     "Translation Quality Survey": "Umfrage zur Übersetzungsqualität"
   },
+  "segments": {
+    "download-title": ["Auf dem eigenen", "Rechner.", "Einmal kaufen."]
+  },
   "ids": {
     "HOME-0001": "entendu. — Broadcast-Untertitellokalisierung für macOS",
     "HOME-0002": "entendu. ist eine native macOS-Workbench für Untertitellokalisierung, KI-Transkription, QA und professionellen Broadcast-Export. Einmal kaufen, für immer besitzen. Unterstützt Netflix TTML, SCC, Disney ST-2052 und über 60 Formate.",
@@ -407,7 +410,7 @@
     "HOME-0036": "7-Tage-Test mit 30 KI-Minuten — volle Pipeline.",
     "HOME-0037": "KI-Minuten sind übersetzungsäquivalent · Übersetzung 1,0× · QA 0,4× · Untertitelung und Ausrichtung 0,1× · sekundengenau abgerechnet",
     "HOME-0038": "Download · macOS 26.1+ · Apple Silicon & Intel",
-    "HOME-0039": "Auf dem eigenen Rechner. Einmal genügt.",
+    "HOME-0039": "Auf dem eigenen Rechner. Einmal kaufen.",
     "HOME-0040": "Teste die volle Pipeline sieben Tage an echtem Material. Wenn du bereit bist, kaufe die Lebenslizenz in der App.",
     "HOME-0041": "Versionshinweise",
     "HOME-0042": "Download für macOS 35 MB · ZIP",

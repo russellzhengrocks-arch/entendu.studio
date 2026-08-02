@@ -41,7 +41,7 @@
     "7-day trial with 30 AI minutes — full pipeline.": "7 天试用，含 30 AI 分钟 — 完整流程可用。",
     "AI minutes are translation-equivalent · translation 1.0× · QA 0.4× · captioning and alignment 0.1× · billed to the second": "AI 分钟按翻译当量计费 · 翻译 1.0× · QA 0.4× · 字幕生成与对齐 0.1× · 按秒计费",
     "Download · macOS 26.1+ · Apple Silicon & Intel": "下载 · macOS 26.1+ · Apple Silicon 与 Intel",
-    "Run it on your own machine. Once.": "在自己的电脑上运行 一次即可",
+    "Run it on your own machine. Once.": "在自己的电脑上运行 一次买断",
     "Try the full pipeline for seven days on a real source. When you're ready, buy a lifetime license from inside the app.": "用真实素材试用完整流程七天。准备好后，在应用内购买终身授权。",
     "Release notes": "更新说明",
     "Download for macOS 35 MB · ZIP": "下载 macOS 版 35 MB · ZIP",
@@ -372,7 +372,7 @@
   "segments": {
     "hero-title": ["字幕 ", "一键就懂", ""],
     "pricing-title": ["工具归你所有", "告别月费", "永久"],
-    "download-title": ["在自己的", "电脑上运行", "一次即可"]
+    "download-title": ["在自己的", "电脑上运行", "一次买断"]
   },
   "ids": {
     "HOME-0001": "entendu. — 面向 macOS 的广播级字幕本地化",
@@ -412,7 +412,7 @@
     "HOME-0036": "7 天试用，含 30 AI 分钟 — 完整流程可用。",
     "HOME-0037": "AI 分钟按翻译当量计费 · 翻译 1.0× · QA 0.4× · 字幕生成与对齐 0.1× · 按秒计费",
     "HOME-0038": "下载 · macOS 26.1+ · Apple Silicon 与 Intel",
-    "HOME-0039": "在自己的电脑上运行 一次即可",
+    "HOME-0039": "在自己的电脑上运行 一次买断",
     "HOME-0040": "用真实素材试用完整流程七天。准备好后，在应用内购买终身授权。",
     "HOME-0041": "更新说明",
     "HOME-0042": "下载 macOS 版 35 MB · ZIP",

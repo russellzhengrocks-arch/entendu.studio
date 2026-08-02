@@ -41,7 +41,7 @@
     "7-day trial with 30 AI minutes — full pipeline.": "Essai de 7 jours avec 30 minutes IA — pipeline complet.",
     "AI minutes are translation-equivalent · translation 1.0× · QA 0.4× · captioning and alignment 0.1× · billed to the second": "Les minutes IA sont en équivalent traduction · traduction 1,0× · QA 0,4× · sous-titrage et alignement 0,1× · facturation à la seconde",
     "Download · macOS 26.1+ · Apple Silicon & Intel": "Télécharger · macOS 26.1+ · Apple Silicon et Intel",
-    "Run it on your own machine. Once.": "Faites-le tourner sur votre machine. Une fois pour toutes.",
+    "Run it on your own machine. Once.": "Sur votre propre machine. Un seul achat.",
     "Try the full pipeline for seven days on a real source. When you're ready, buy a lifetime license from inside the app.": "Testez le pipeline complet pendant sept jours sur une vraie source. Quand vous êtes prêt, achetez la licence à vie depuis l’app.",
     "Release notes": "Notes de version",
     "Download for macOS 35 MB · ZIP": "Télécharger pour macOS 35 Mo · ZIP",
@@ -369,6 +369,9 @@
     "Target language": "Langue cible",
     "Translation Quality Survey": "Enquête sur la qualité de traduction"
   },
+  "segments": {
+    "download-title": ["Sur votre propre", "machine.", "Un seul achat."]
+  },
   "ids": {
     "HOME-0001": "entendu. — Localisation de sous-titres broadcast pour macOS",
     "HOME-0002": "entendu. est un atelier natif macOS pour la localisation de sous-titres, la transcription IA, le QA et l’export broadcast pro. Achetez une fois, possédez pour toujours. Prend en charge Netflix TTML, SCC, Disney ST-2052 et plus de 60 formats.",
@@ -407,7 +410,7 @@
     "HOME-0036": "Essai de 7 jours avec 30 minutes IA — pipeline complet.",
     "HOME-0037": "Les minutes IA sont en équivalent traduction · traduction 1,0× · QA 0,4× · sous-titrage et alignement 0,1× · facturation à la seconde",
     "HOME-0038": "Télécharger · macOS 26.1+ · Apple Silicon et Intel",
-    "HOME-0039": "Faites-le tourner sur votre machine. Une fois pour toutes.",
+    "HOME-0039": "Sur votre propre machine. Un seul achat.",
     "HOME-0040": "Testez le pipeline complet pendant sept jours sur une vraie source. Quand vous êtes prêt, achetez la licence à vie depuis l’app.",
     "HOME-0041": "Notes de version",
     "HOME-0042": "Télécharger pour macOS 35 Mo · ZIP",

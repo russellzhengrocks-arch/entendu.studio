@@ -270,6 +270,7 @@
             :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) .pricing-primary h2>*{white-space:nowrap}
             :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) :is(#hero-title,#pricing-title,#download-title) em{font-style:normal}
             html:lang(ja) #hero-title{font-size:clamp(20px,5.2vw,46px);white-space:nowrap}
+            html:lang(ja) #download-title{font-size:clamp(36px,5vw,64px);white-space:nowrap}
             @media(max-width:980px){.entendu-locale-switcher.is-in-nav{position:fixed;right:16px;bottom:16px;padding:7px 9px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(17,19,23,.94);box-shadow:0 10px 30px rgba(0,0,0,.28)}}
             @media(max-width:720px){.pricing-row,.pricing-row.is-featured{grid-template-columns:1fr}.pricing-primary h2>*{white-space:normal}}
         `;

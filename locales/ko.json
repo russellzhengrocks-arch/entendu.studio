@@ -41,7 +41,7 @@
     "7-day trial with 30 AI minutes — full pipeline.": "7일 체험, 30 AI분 포함 — 전체 파이프라인 사용 가능.",
     "AI minutes are translation-equivalent · translation 1.0× · QA 0.4× · captioning and alignment 0.1× · billed to the second": "AI분은 번역 환산 · 번역 1.0× · QA 0.4× · 캡션·정렬 0.1× · 초 단위 과금",
     "Download · macOS 26.1+ · Apple Silicon & Intel": "다운로드 · macOS 26.1+ · Apple Silicon & Intel",
-    "Run it on your own machine. Once.": "내 컴퓨터에서 실행 한 번이면 됩니다",
+    "Run it on your own machine. Once.": "내 Mac에서 실행 한 번만 구매",
     "Try the full pipeline for seven days on a real source. When you're ready, buy a lifetime license from inside the app.": "실제 소스로 7일간 전체 파이프라인을 체험하세요. 준비되면 앱 안에서 평생 라이선스를 구매하세요.",
     "Release notes": "릴리스 노트",
     "Download for macOS 35 MB · ZIP": "macOS용 다운로드 35 MB · ZIP",
@@ -372,7 +372,7 @@
   "segments": {
     "hero-title": ["자막 ", "한 번에 이해", ""],
     "pricing-title": ["도구는 당신의 것", "월 구독 없이", "영원히"],
-    "download-title": ["내 컴퓨터에서", "실행", "한 번이면 됩니다"]
+    "download-title": ["내 Mac에서 실행", "", "한 번만 구매"]
   },
   "ids": {
     "HOME-0001": "entendu. — macOS용 방송 자막 로컬라이제이션",
@@ -412,7 +412,7 @@
     "HOME-0036": "7일 체험, 30 AI분 포함 — 전체 파이프라인 사용 가능.",
     "HOME-0037": "AI분은 번역 환산 · 번역 1.0× · QA 0.4× · 캡션·정렬 0.1× · 초 단위 과금",
     "HOME-0038": "다운로드 · macOS 26.1+ · Apple Silicon & Intel",
-    "HOME-0039": "내 컴퓨터에서 실행 한 번이면 됩니다",
+    "HOME-0039": "내 Mac에서 실행 한 번만 구매",
     "HOME-0040": "실제 소스로 7일간 전체 파이프라인을 체험하세요. 준비되면 앱 안에서 평생 라이선스를 구매하세요.",
     "HOME-0041": "릴리스 노트",
     "HOME-0042": "macOS용 다운로드 35 MB · ZIP",

@@ -41,7 +41,7 @@
     "7-day trial with 30 AI minutes — full pipeline.": "7日間トライアル、30 AI分付き — 全パイプライン利用可。",
     "AI minutes are translation-equivalent · translation 1.0× · QA 0.4× · captioning and alignment 0.1× · billed to the second": "AI分は翻訳換算 · 翻訳 1.0× · QA 0.4× · キャプション生成・アラインメント 0.1× · 秒単位で課金",
     "Download · macOS 26.1+ · Apple Silicon & Intel": "ダウンロード · macOS 26.1+ · Apple Silicon & Intel",
-    "Run it on your own machine. Once.": "自分のマシンで動かす 一度きり",
+    "Run it on your own machine. Once.": "自分のMacで動く 買い切り",
     "Try the full pipeline for seven days on a real source. When you're ready, buy a lifetime license from inside the app.": "実際の素材で7日間、全パイプラインを試せます。準備ができたら、アプリ内で買い切りライセンスを購入。",
     "Release notes": "リリースノート",
     "Download for macOS 35 MB · ZIP": "macOS版をダウンロード 35 MB · ZIP",
@@ -372,7 +372,7 @@
   "segments": {
     "hero-title": ["字幕 ", "ワンクリックでわかる", ""],
     "pricing-title": ["ツールはあなたのもの", "月額課金なし", "ずっと"],
-    "download-title": ["自分のマシンで", "動かす", "一度きり"]
+    "download-title": ["自分のMacで動く", "", "買い切り"]
   },
   "ids": {
     "HOME-0001": "entendu. — macOS向け放送字幕ローカライズ",
@@ -412,7 +412,7 @@
     "HOME-0036": "7日間トライアル、30 AI分付き — 全パイプライン利用可。",
     "HOME-0037": "AI分は翻訳換算 · 翻訳 1.0× · QA 0.4× · キャプション生成・アラインメント 0.1× · 秒単位で課金",
     "HOME-0038": "ダウンロード · macOS 26.1+ · Apple Silicon & Intel",
-    "HOME-0039": "自分のマシンで動かす 一度きり",
+    "HOME-0039": "自分のMacで動く 買い切り",
     "HOME-0040": "実際の素材で7日間、全パイプラインを試せます。準備ができたら、アプリ内で買い切りライセンスを購入。",
     "HOME-0041": "リリースノート",
     "HOME-0042": "macOS版をダウンロード 35 MB · ZIP",
