@@ -106,6 +106,16 @@
     function replaceTextPreservingMarkup(element, target) {
         const nodes = significantTextNodes(element);
         if (!nodes.length) return;
+
+        const segmentKey = element.dataset.entenduI18nSegments;
+        const explicitSegments = segmentKey ? activeResource?.segments?.[segmentKey] : null;
+        if (Array.isArray(explicitSegments) && explicitSegments.length === nodes.length) {
+            nodes.forEach((node, index) => {
+                node.nodeValue = explicitSegments[index];
+            });
+            return;
+        }
+
         if (nodes.length === 1) {
             nodes[0].nodeValue = target;
             return;
@@ -258,6 +268,7 @@
             .pricing-row h4{overflow-wrap:anywhere}
             :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) .pricing-primary h2{font-size:clamp(42px,3.7vw,60px);text-wrap:initial}
             :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) .pricing-primary h2>*{white-space:nowrap}
+            :is(html:lang(zh-Hans),html:lang(zh-Hant),html:lang(ja),html:lang(ko)) :is(#hero-title,#pricing-title,#download-title) em{font-style:normal}
             @media(max-width:980px){.entendu-locale-switcher.is-in-nav{position:fixed;right:16px;bottom:16px;padding:7px 9px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(17,19,23,.94);box-shadow:0 10px 30px rgba(0,0,0,.28)}}
             @media(max-width:720px){.pricing-row,.pricing-row.is-featured{grid-template-columns:1fr}.pricing-primary h2>*{white-space:normal}}
         `;
