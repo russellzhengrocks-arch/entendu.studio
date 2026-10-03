@@ -5270,17 +5270,30 @@
 }</script>
         </section>
 
+        <style id="pricing-free-update">
+#pricing .pricing-free-revision{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+#pricing .pricing-old-price{position:relative;font-size:clamp(64px,7vw,108px);line-height:1;color:rgba(231,233,236,.65);letter-spacing:-5px}
+#pricing .pricing-old-price svg{position:absolute;width:120%;height:65%;left:-10%;top:20%;overflow:visible}
+#pricing .pricing-free-word{color:#e77b6e;font-family:Georgia,serif;font-style:italic;font-size:clamp(52px,5vw,78px);line-height:1.1;letter-spacing:-3px;font-weight:400;transform:rotate(-6deg)}
+#pricing .pricing-minute-rate{display:inline-block;margin-top:7px;color:#e6b7a2;font-size:14px}
+#pricing .pricing-topup{display:flex;align-items:center;gap:20px;padding:24px 18px;border-bottom:1px solid rgba(231,233,236,.12)}
+#pricing .pricing-topup>div{flex:1}#pricing .pricing-topup .pricing-kicker{margin:0 0 10px}#pricing .pricing-topup h4{font-size:25px;margin:0;color:#e7e9ec}#pricing .pricing-topup h4 span{font-size:14px;font-weight:400;color:#a5a7aa}
+#pricing .pricing-topup p:not(.pricing-kicker),#pricing .pricing-rollover p{font-size:13px;line-height:1.65;color:#a5a7aa;margin:10px 0 0}
+#pricing .pricing-topup a{white-space:nowrap}#pricing .pricing-rollover{padding:22px 18px 0}#pricing .pricing-rollover h4{font-family:Georgia,serif;font-size:22px;font-weight:400;margin:0;color:#e6b7a2}#pricing .pricing-rollover summary{cursor:pointer;font-size:12px;color:#bdbfc2;margin-top:12px}
+@media(max-width:600px){#pricing .pricing-topup{align-items:flex-start;flex-direction:column}#pricing .pricing-free-revision{flex-direction:row;align-items:center;gap:24px}#pricing .pricing-old-price{font-size:72px}#pricing .pricing-free-word{font-size:56px}}
+        </style>
+
         <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
             <div class="pricing-board" data-reveal>
                 <div class="pricing-primary">
                     <p class="pricing-kicker">Pricing · the short version</p>
                     <h2 id="pricing-title">
-                        <span>Use Entendu free.</span>
-                        <em>Share your AI balance.</em>
-                        <span>With SubA.</span>
+                        <span>Own the tool.</span>
+                        <em>Skip the monthly bill.</em>
+                        <span>Forever.</span>
                     </h2>
                     <div class="pricing-main-offer">
-                        <strong data-commerce-price>Free</strong>
+                        <div class="pricing-free-revision" aria-label="Previously 29 dollars. Now free."><span class="pricing-old-price" aria-hidden="true">$29<svg viewBox="0 0 180 60" preserveAspectRatio="none"><path d="M3 43 L172 8 L177 15 L9 49 Z" fill="#d65347"/><path d="M8 51 L169 19 M17 37 L175 5" stroke="#d65347" stroke-width="2" opacity=".65"/></svg></span><strong class="pricing-free-word">Free</strong></div>
                         <p>
                             <span>No software license fee</span>
                             <span>60 AI minutes on registration</span>
@@ -5302,7 +5315,7 @@
                             <strong data-commerce-price>$36</strong>
                             <div>
                                 <h4>Monthly</h4>
-                                <p data-commerce-subtitle>150 shared AI minutes per month.</p>
+                                <p>150 shared AI minutes per month.<br><span class="pricing-minute-rate">$0.24 / minute</span></p>
                             </div>
                             <a class="pricing-mark" href="/app/?purchase=monthly" data-commerce-checkout aria-label="Buy Monthly">Subscribe</a>
                         </article>
@@ -5311,18 +5324,23 @@
                             <div>
                                 <h4>Quarterly <span class="pricing-popular">Popular</span></h4>
                             </div>
-                            <p data-commerce-subtitle>450 shared AI minutes per quarter.</p>
+                            <p>450 shared AI minutes per quarter.<br><span class="pricing-minute-rate">$0.22 / minute</span></p>
                             <a class="pricing-discount" href="/app/?purchase=quarterly" data-commerce-checkout aria-label="Buy Quarterly">Subscribe</a>
                         </article>
                         <article class="pricing-row" data-commerce-package="annual">
                             <strong data-commerce-price>$360</strong>
                             <div>
                                 <h4>Annual</h4>
-                                <p data-commerce-subtitle>1,800 shared AI minutes per year.</p>
+                                <p>1,800 shared AI minutes per year.<br><span class="pricing-minute-rate">$0.20 / minute</span></p>
                             </div>
                             <a class="pricing-discount" href="/app/?purchase=annual" data-commerce-checkout aria-label="Buy Annual">Subscribe</a>
                         </article>
                     </div>
+                    <div class="pricing-topup">
+                        <div><p class="pricing-kicker">Or, just add minutes</p><h4>$15 <span>/ 50 minutes</span></h4><p>$0.30 / minute without a plan. No subscription required. Choose your amount in the app’s Add credits menu.</p></div>
+                        <a class="pricing-mark" href="/app/" aria-label="Open app to add prepaid AI minutes">Add minutes ↗</a>
+                    </div>
+                    <div class="pricing-rollover"><h4>Unused AI minutes roll over.</h4><p>Carry unused plan minutes into your next billing cycle, up to one cycle’s allowance: 150 monthly, 450 quarterly or 1,800 annually. At the cap, new cycle minutes stop stacking.</p><details><summary>How your balance works</summary><p>Use your quarterly or annual allowance whenever you need it within that cycle. After cancellation, rolled-over minutes remain available for 90 days. Prepaid credit never expires; active subscribers use it at their plan’s per-minute rate.</p></details></div>
                 </div>
                 <p class="pricing-trial-note"><span><strong>Free software</strong> with 60 shared AI minutes on registration.</span></p>
             </div>
