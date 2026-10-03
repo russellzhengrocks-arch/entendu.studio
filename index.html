@@ -5272,11 +5272,11 @@
 
         <style id="pricing-free-update">
 #pricing .pricing-main-offer{flex-direction:column;align-items:flex-start;gap:26px}
-#pricing .pricing-free-revision{display:flex;align-items:center;gap:clamp(20px,2.5vw,38px);width:100%}
+#pricing .pricing-free-revision{display:flex;align-items:center;gap:clamp(40px,5vw,76px);width:100%}
 #pricing .pricing-old-price{position:relative;flex-shrink:0;font-family:var(--font);font-size:clamp(64px,7vw,108px);font-weight:460;line-height:1;color:rgba(231,233,236,.65);letter-spacing:-5px}
 #pricing .pricing-old-price svg{position:absolute;width:126%;height:75%;left:-13%;top:13%;overflow:visible}
 #pricing .pricing-free-word{color:rgba(231,233,236,.86);font-family:var(--font);font-size:clamp(112px,12vw,180px);font-weight:460;line-height:.84;letter-spacing:-5px}
-#pricing .pricing-minute-rate{display:inline-block;margin-top:7px;font:inherit;color:inherit;font-weight:600}
+#pricing .pricing-minute-rate{display:inline;margin-top:0;white-space:nowrap;font:inherit;color:inherit;font-weight:600}
 #pricing .pricing-topup{display:flex;align-items:center;gap:20px;padding:24px 18px;border-bottom:1px solid rgba(231,233,236,.12)}
 #pricing .pricing-topup>div{flex:1}#pricing .pricing-topup .pricing-kicker{margin:0 0 10px}
 #pricing .pricing-topup h4,#pricing .pricing-topup h4 span,#pricing .pricing-topup p:not(.pricing-kicker),#pricing .pricing-rollover h4,#pricing .pricing-rollover p,#pricing .pricing-rollover summary,#pricing .pricing-trial-note,#pricing .pricing-trial-note strong,#pricing .pricing-credit-line{font-family:var(--mono);font-size:12px;font-weight:400;line-height:1.55;color:rgba(231,233,236,.39);letter-spacing:normal;text-transform:none;font-style:normal}
@@ -5284,6 +5284,10 @@
 #pricing .pricing-topup a{white-space:nowrap}#pricing .pricing-rollover{padding:22px 18px 0}#pricing .pricing-rollover h4{margin:0}#pricing .pricing-rollover summary{cursor:pointer;margin-top:12px}
 @media(max-width:600px){#pricing .pricing-topup{align-items:flex-start;flex-direction:column}#pricing .pricing-free-revision{gap:24px}#pricing .pricing-old-price{font-size:64px}#pricing .pricing-free-word{font-size:112px;letter-spacing:-4px}}
 @media(max-width:360px){#pricing .pricing-free-revision{gap:16px}#pricing .pricing-old-price{font-size:54px}#pricing .pricing-free-word{font-size:94px}}
+
+#pricing .pricing-row,#pricing .pricing-row.is-featured{grid-template-columns:96px minmax(0,1fr) auto;grid-template-areas:"price title action" "price description description";column-gap:18px;row-gap:9px}
+#pricing .pricing-row>strong{grid-area:price}#pricing .pricing-row>div,#pricing .pricing-row.is-featured>div{display:contents}#pricing .pricing-row h4{grid-area:title;align-self:center}#pricing .pricing-row p,#pricing .pricing-row.is-featured>p{grid-area:description;margin:0;align-self:start;max-width:none}#pricing .pricing-row>a,#pricing .pricing-row.is-featured>.pricing-discount{grid-area:action;align-self:center}
+@media(max-width:600px){#pricing .pricing-row,#pricing .pricing-row.is-featured{grid-template-columns:74px minmax(0,1fr);grid-template-areas:"price title" "description description" ". action";column-gap:16px}#pricing .pricing-row>a{justify-self:start}}
         </style>
 
         <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
@@ -5318,7 +5322,7 @@
                             <strong data-commerce-price>$36</strong>
                             <div>
                                 <h4>Monthly</h4>
-                                <p>150 shared AI minutes per month.<br><span class="pricing-minute-rate">$0.24 / minute</span></p>
+                                <p>150 shared AI minutes per month · <span class="pricing-minute-rate">$0.24/min</span></p>
                             </div>
                             <a class="pricing-mark" href="/app/?purchase=monthly" data-commerce-checkout aria-label="Buy Monthly">Subscribe</a>
                         </article>
@@ -5327,14 +5331,14 @@
                             <div>
                                 <h4>Quarterly <span class="pricing-popular">Popular</span></h4>
                             </div>
-                            <p>450 shared AI minutes per quarter.<br><span class="pricing-minute-rate">$0.22 / minute</span></p>
+                            <p>450 shared AI minutes per quarter · <span class="pricing-minute-rate">$0.22/min</span></p>
                             <a class="pricing-discount" href="/app/?purchase=quarterly" data-commerce-checkout aria-label="Buy Quarterly">Subscribe</a>
                         </article>
                         <article class="pricing-row" data-commerce-package="annual">
                             <strong data-commerce-price>$360</strong>
                             <div>
                                 <h4>Annual</h4>
-                                <p>1,800 shared AI minutes per year.<br><span class="pricing-minute-rate">$0.20 / minute</span></p>
+                                <p>1,800 shared AI minutes per year · <span class="pricing-minute-rate">$0.20/min</span></p>
                             </div>
                             <a class="pricing-discount" href="/app/?purchase=annual" data-commerce-checkout aria-label="Buy Annual">Subscribe</a>
                         </article>
