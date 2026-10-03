@@ -5271,16 +5271,19 @@
         </section>
 
         <style id="pricing-free-update">
-#pricing .pricing-free-revision{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
-#pricing .pricing-old-price{position:relative;font-size:clamp(64px,7vw,108px);line-height:1;color:rgba(231,233,236,.65);letter-spacing:-5px}
-#pricing .pricing-old-price svg{position:absolute;width:120%;height:65%;left:-10%;top:20%;overflow:visible}
-#pricing .pricing-free-word{color:#e77b6e;font-family:Georgia,serif;font-style:italic;font-size:clamp(52px,5vw,78px);line-height:1.1;letter-spacing:-3px;font-weight:400;transform:rotate(-6deg)}
-#pricing .pricing-minute-rate{display:inline-block;margin-top:7px;color:#e6b7a2;font-size:14px}
+#pricing .pricing-main-offer{flex-direction:column;align-items:flex-start;gap:26px}
+#pricing .pricing-free-revision{display:flex;align-items:center;gap:clamp(20px,2.5vw,38px);width:100%}
+#pricing .pricing-old-price{position:relative;flex-shrink:0;font-family:var(--font);font-size:clamp(64px,7vw,108px);font-weight:460;line-height:1;color:rgba(231,233,236,.65);letter-spacing:-5px}
+#pricing .pricing-old-price svg{position:absolute;width:126%;height:75%;left:-13%;top:13%;overflow:visible}
+#pricing .pricing-free-word{color:rgba(231,233,236,.86);font-family:var(--font);font-size:clamp(112px,12vw,180px);font-weight:460;line-height:.84;letter-spacing:-5px}
+#pricing .pricing-minute-rate{display:inline-block;margin-top:7px;font:inherit;color:inherit;font-weight:600}
 #pricing .pricing-topup{display:flex;align-items:center;gap:20px;padding:24px 18px;border-bottom:1px solid rgba(231,233,236,.12)}
-#pricing .pricing-topup>div{flex:1}#pricing .pricing-topup .pricing-kicker{margin:0 0 10px}#pricing .pricing-topup h4{font-size:25px;margin:0;color:#e7e9ec}#pricing .pricing-topup h4 span{font-size:14px;font-weight:400;color:#a5a7aa}
-#pricing .pricing-topup p:not(.pricing-kicker),#pricing .pricing-rollover p{font-size:13px;line-height:1.65;color:#a5a7aa;margin:10px 0 0}
-#pricing .pricing-topup a{white-space:nowrap}#pricing .pricing-rollover{padding:22px 18px 0}#pricing .pricing-rollover h4{font-family:Georgia,serif;font-size:22px;font-weight:400;margin:0;color:#e6b7a2}#pricing .pricing-rollover summary{cursor:pointer;font-size:12px;color:#bdbfc2;margin-top:12px}
-@media(max-width:600px){#pricing .pricing-topup{align-items:flex-start;flex-direction:column}#pricing .pricing-free-revision{flex-direction:row;align-items:center;gap:24px}#pricing .pricing-old-price{font-size:72px}#pricing .pricing-free-word{font-size:56px}}
+#pricing .pricing-topup>div{flex:1}#pricing .pricing-topup .pricing-kicker{margin:0 0 10px}
+#pricing .pricing-topup h4,#pricing .pricing-topup h4 span,#pricing .pricing-topup p:not(.pricing-kicker),#pricing .pricing-rollover h4,#pricing .pricing-rollover p,#pricing .pricing-rollover summary,#pricing .pricing-trial-note,#pricing .pricing-trial-note strong,#pricing .pricing-credit-line{font-family:var(--mono);font-size:12px;font-weight:400;line-height:1.55;color:rgba(231,233,236,.39);letter-spacing:normal;text-transform:none;font-style:normal}
+#pricing .pricing-topup h4{margin:0}#pricing .pricing-topup p:not(.pricing-kicker),#pricing .pricing-rollover p{margin:10px 0 0}
+#pricing .pricing-topup a{white-space:nowrap}#pricing .pricing-rollover{padding:22px 18px 0}#pricing .pricing-rollover h4{margin:0}#pricing .pricing-rollover summary{cursor:pointer;margin-top:12px}
+@media(max-width:600px){#pricing .pricing-topup{align-items:flex-start;flex-direction:column}#pricing .pricing-free-revision{gap:24px}#pricing .pricing-old-price{font-size:64px}#pricing .pricing-free-word{font-size:112px;letter-spacing:-4px}}
+@media(max-width:360px){#pricing .pricing-free-revision{gap:16px}#pricing .pricing-old-price{font-size:54px}#pricing .pricing-free-word{font-size:94px}}
         </style>
 
         <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
@@ -5293,7 +5296,7 @@
                         <span>Forever.</span>
                     </h2>
                     <div class="pricing-main-offer">
-                        <div class="pricing-free-revision" aria-label="Previously 29 dollars. Now free."><span class="pricing-old-price" aria-hidden="true">$29<svg viewBox="0 0 180 60" preserveAspectRatio="none"><path d="M3 43 L172 8 L177 15 L9 49 Z" fill="#d65347"/><path d="M8 51 L169 19 M17 37 L175 5" stroke="#d65347" stroke-width="2" opacity=".65"/></svg></span><strong class="pricing-free-word">Free</strong></div>
+                        <div class="pricing-free-revision" aria-label="Previously 29 dollars. Now free."><span class="pricing-old-price" aria-hidden="true">$29<svg viewBox="0 0 220 80" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="ink-edge" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".075 .36" numOctaves="3" seed="17" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter><mask id="ink-dry"><rect width="220" height="80" fill="white"/><g fill="none" stroke="black" stroke-linecap="round"><path d="M10 54 Q65 43 106 37 T195 16" stroke-width="1.3"/><path d="M39 53 Q92 39 139 32" stroke-width="1.8"/><path d="M110 34 L170 21 M152 31 L210 15 M17 59 L47 53" stroke-width=".8"/><path d="M58 47 l8 -2 m7 -2 l11 -3 m44 -5 l19 -5 m27 -9 l13 -3" stroke-width="2"/></g></mask></defs><g fill="#bd4138" filter="url(#ink-edge)" mask="url(#ink-dry)"><path d="M5 53 L15 48 L32 47 L49 42 L65 40 L91 32 L113 29 L130 23 L151 21 L173 15 L198 10 L217 8 L211 13 L216 14 L198 19 L187 19 L167 25 L149 29 L133 31 L112 38 L97 40 L73 47 L57 49 L37 56 L20 58 L8 62 L11 57 L3 58 Z"/><path d="M12 64 Q90 45 206 21 L194 25 Q97 48 26 63 Z" opacity=".6"/><path d="M22 46 Q86 28 184 12 L165 18 Q75 37 22 48 Z" opacity=".45"/></g></svg></span><strong class="pricing-free-word">Free</strong></div>
                         <p>
                             <span>No software license fee</span>
                             <span>60 AI minutes on registration</span>
