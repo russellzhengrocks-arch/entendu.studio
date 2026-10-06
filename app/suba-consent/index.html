@@ -1,2 +1,214 @@
 <!doctype html>
-<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>连接 SubA · Entendu</title><style>body{font:16px/1.65 system-ui;background:#f5f7f8;color:#192f39;max-width:580px;margin:64px auto;padding:0 24px}main{background:white;border:1px solid #dce2e5;border-radius:18px;padding:32px}h1{margin:0}button,input{font:inherit;padding:12px;border-radius:8px;margin:6px 0}button{cursor:pointer;background:#174e61;color:white;border:0}button:disabled{opacity:.55;cursor:wait}input{box-sizing:border-box;width:100%;border:1px solid #ccd4d9}label{display:block}small{color:#52636b}#status{white-space:pre-wrap}code{overflow-wrap:anywhere}[hidden]{display:none!important}</style><script type="module" src="./consent.js"></script></head><body><main><h1>连接 SubA</h1><p>使用 Entendu 账号连接 Codex，完成后回到聊天使用字幕工具。</p><p id="status" role="status" aria-live="polite">正在加载…</p><section id="login"><button id="google">使用 Google 登录</button><details><summary>已有邮箱密码账号</summary><label>邮箱<input id="email" type="email" autocomplete="username"></label><label>密码<input id="password" type="password" autocomplete="current-password"></label><button id="password-login">登录</button></details></section><section id="signed-in" hidden><small id="identity"></small> <button id="logout">切换账号</button></section><section id="consent" hidden><h2>允许 <span id="client"></span> 连接？</h2><p>连接后，该客户端可访问你的 SubA 字幕任务与额度，并发起按分钟计费的翻译。付款仍需在结账页面确认。</p><p>请求范围：<code id="scope"></code></p><p>返回地址：<code id="redirect"></code></p><button id="approve">允许连接</button> <button id="deny">拒绝</button></section></main></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Connect SubA · entendu.</title>
+<link rel="icon" href="/assets/favicon-32.png">
+<style>
+:root{
+  --page:#0d0f12;--panel:#131619;--panel-2:#1a1d21;
+  --text:#e7e9ec;--text-dim:rgba(231,233,236,.66);--text-faint:rgba(231,233,236,.42);
+  --accent:#d8d4cc;--accent-ink:#0d0f12;--amber:#c8a86a;--red:#d68a82;
+  --line:rgba(255,255,255,.08);--line-strong:rgba(255,255,255,.14);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+  --serif:"New York","Iowan Old Style",Georgia,ui-serif,serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  --radius-card:8px;--radius-control:6px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{
+  min-height:100vh;display:flex;flex-direction:column;
+  font:16px/1.6 var(--font);color:var(--text);background:var(--page);
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+a{color:var(--accent)}a:hover{color:var(--text)}
+code{font-family:var(--mono);font-size:12px;overflow-wrap:anywhere}
+
+/* header */
+.site-header{height:68px;padding:0 24px;border-bottom:1px solid var(--line);display:flex;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-size:14px;font-weight:650}
+.brand img{width:26px;height:26px;border-radius:6px}
+
+/* layout */
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px}
+.grid{width:100%;max-width:1040px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center}
+
+/* intro column */
+.intro{display:flex;flex-direction:column;gap:28px}
+.eyebrow{margin:0;font:650 11px/1 var(--mono);letter-spacing:1.7px;text-transform:uppercase;color:var(--accent)}
+.intro h1{margin:0;font:400 56px/1.08 var(--serif);letter-spacing:-.01em}
+.intro h1 em{color:var(--accent)}
+.lede{margin:0;color:var(--text-dim);max-width:440px}
+.steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-dim)}
+.steps li{display:flex;gap:14px;align-items:center}
+.steps b{font:400 11px var(--mono);color:var(--amber)}
+
+/* demo player (same treatment as the homepage hero) */
+.demo-player{position:relative;width:100%;max-width:500px;aspect-ratio:16/9;overflow:hidden;border-radius:var(--radius-card);border:1px solid var(--line-strong);background:var(--panel);box-shadow:0 30px 60px -30px rgba(0,0,0,.46)}
+.demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.54) saturate(.82) contrast(.96)}
+.demo-video-shade{position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.34) 58%,rgba(0,0,0,.62)),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 4px)}
+.demo-timecode,.demo-playing{position:absolute;padding:3px 8px;border-radius:3px;background:rgba(0,0,0,.46);font:10px var(--mono);color:rgba(255,255,255,.64)}
+.demo-timecode{top:12px;right:12px}
+.demo-playing{bottom:12px;left:12px}
+.demo-caption{position:absolute;left:0;right:0;bottom:30px;min-height:30px;padding:0 16px;display:flex;justify-content:center;align-items:center;gap:2px;font-size:20px;font-weight:560;color:#fff;text-align:center;text-shadow:rgba(0,0,0,.88) 0 2px 8px,#000 0 0 2px}
+.caption-caret{width:2px;height:22px;background:rgba(255,255,255,.82);animation:caret .9s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+
+/* card */
+.card{background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--radius-card);padding:36px 32px;display:flex;flex-direction:column;gap:22px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.chain{display:flex;align-items:center;gap:10px;font-size:13px;flex-wrap:wrap}
+.chain span{padding:4px 10px;border:1px solid var(--line-strong);border-radius:var(--radius-control)}
+.chain .on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:650}
+.chain i{width:28px;border-top:1.4px dashed var(--text-faint)}
+.card h2{margin:0;font:400 28px/1.2 var(--serif)}
+#status{margin:0;font-size:13px;color:var(--text-dim);white-space:pre-wrap;padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius-control);background:rgba(255,255,255,.02)}
+#status:empty{display:none}
+section{display:flex;flex-direction:column;gap:16px}
+
+/* controls */
+button{font:inherit;cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{height:44px;padding:0 16px;border-radius:var(--radius-control);display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:650}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border:1px solid rgba(216,212,204,.88)}
+.btn-primary:hover{background:#e7e3db}
+.btn-secondary{background:rgba(255,255,255,.043);color:var(--text);border:1px solid var(--line-strong)}
+.btn-secondary:hover{background:rgba(255,255,255,.08)}
+.btn-block{width:100%}
+.divider{display:flex;align-items:center;gap:12px;font:650 10px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--text-faint)}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--text-dim)}
+.field input{height:44px;padding:0 14px;border-radius:var(--radius-control);border:1px solid var(--line-strong);background:var(--page);color:var(--text);font:15px var(--font)}
+.field input::placeholder{color:var(--text-faint)}
+.field input:focus{outline:none;border-color:rgba(216,212,204,.6);box-shadow:0 0 0 3px rgba(216,212,204,.12)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .btn{flex:1 1 140px}
+.identity{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-control)}
+.identity small{overflow-wrap:anywhere;min-width:0;font-size:13px;color:var(--text)}
+.identity .btn{height:34px;font-size:13px}
+.consent-copy{margin:0;font-size:14px;color:var(--text-dim)}
+.meta{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:13px;padding:14px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--page)}
+.meta dt{color:var(--text-faint)}
+.meta dd{min-width:0;margin:0;color:var(--text)}
+.fine{margin:0;font-size:12px;color:var(--text-faint)}
+
+@media (max-width:560px){
+  .intro h1{font-size:42px}
+  .card{padding:28px 20px}
+}
+@media (prefers-reduced-motion:reduce){.caption-caret{animation:none}}
+</style>
+<script type="module" src="./consent.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="entendu. home"><img src="/assets/app-icon-512.png" alt="" aria-hidden="true"><span>entendu.</span></a>
+</header>
+
+<main class="wrap">
+<div class="grid">
+
+  <div class="intro">
+    <p class="eyebrow">SubA · Codex connection</p>
+    <h1>Connect <em>SubA</em>.</h1>
+    <p class="lede">Sign in with your entendu. account to connect Codex. When you're done, return to the chat to use the subtitle tools.</p>
+
+    <div class="demo-player" aria-label="Silent product demo video with live subtitles">
+      <video class="demo-video" src="/assets/demo18.mov" autoplay muted loop playsinline preload="metadata"></video>
+      <div class="demo-video-shade" aria-hidden="true"></div>
+      <div class="demo-timecode" data-demo-timecode>00:04:17:00</div>
+      <div class="demo-caption"><span data-demo-caption>Patient number eighteen, please</span><span class="caption-caret" aria-hidden="true"></span></div>
+      <div class="demo-playing">playing</div>
+    </div>
+
+    <ol class="steps">
+      <li><b>01</b>Sign in with entendu.</li>
+      <li><b>02</b>Authorize SubA for Codex</li>
+      <li><b>03</b>Return to the chat and start subtitling</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <div class="chain" aria-hidden="true"><span>entendu.</span><i></i><span class="on">SubA</span><i></i><span>Codex</span></div>
+
+    <p id="status" role="status" aria-live="polite">Loading…</p>
+
+    <!-- Signed out -->
+    <section id="login">
+      <h2>Sign in</h2>
+      <button id="google" type="button" class="btn btn-secondary btn-block">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>
+        Continue with Google
+      </button>
+      <div class="divider">Or use email &amp; password</div>
+      <label class="field">Email<input id="email" type="email" autocomplete="username" placeholder="you@studio.com"></label>
+      <label class="field">Password<input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+      <button id="password-login" type="button" class="btn btn-primary btn-block">Sign in</button>
+    </section>
+
+    <!-- Signed in -->
+    <section id="signed-in" hidden>
+      <div class="identity"><small id="identity"></small><button id="logout" type="button" class="btn btn-secondary">Switch account</button></div>
+    </section>
+
+    <!-- Consent -->
+    <section id="consent" hidden>
+      <h2>Allow <span id="client"></span> to connect?</h2>
+      <p class="consent-copy">Once connected, this client can access your SubA subtitle jobs and balance, and start per-minute translation jobs. Payments still need to be confirmed on the checkout page.</p>
+      <dl class="meta">
+        <dt>Scope</dt><dd><code id="scope"></code></dd>
+        <dt>Redirect</dt><dd><code id="redirect"></code></dd>
+      </dl>
+      <div class="row">
+        <button id="approve" type="button" class="btn btn-primary">Allow connection</button>
+        <button id="deny" type="button" class="btn btn-secondary">Deny</button>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+</main>
+
+<script>
+/* Decorative demo player — same behaviour as the homepage hero. Independent of consent.js. */
+(function () {
+  var caption = document.querySelector("[data-demo-caption]");
+  var timecode = document.querySelector("[data-demo-timecode]");
+  var video = document.querySelector(".demo-video");
+  var lines = [
+    "診察番号十八番の方はい",
+    "Patient number eighteen, please",
+    "Сейчас приглашается номер восемнадцать",
+    "請十八號患者進來"
+  ];
+  if (video) { video.muted = true; var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var li = 0;
+  function typeLine() {
+    var letters = Array.from(lines[li]), i = 0;
+    (function tick() {
+      caption.textContent = letters.slice(0, i).join("");
+      i += 1;
+      if (i <= letters.length) { setTimeout(tick, 34); return; }
+      setTimeout(function () { li = (li + 1) % lines.length; typeLine(); }, 1450);
+    })();
+  }
+  typeLine();
+
+  function pad(n) { return String(n).padStart(2, "0"); }
+  (function loop() {
+    var base = 4 * 60 + 17 + ((video && video.currentTime) || 0);
+    timecode.textContent = "00:" + pad(Math.floor(base / 60)) + ":" + pad(Math.floor(base % 60)) + ":" + pad(Math.floor((base % 1) * 24));
+    requestAnimationFrame(loop);
+  })();
+})();
+</script>
+</body>
+</html>
