@@ -97,6 +97,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .meta dt{color:var(--text-faint)}
 .meta dd{min-width:0;margin:0;color:var(--text)}
 .fine{margin:0;font-size:12px;color:var(--text-faint)}
+#login details summary{cursor:pointer;font-size:13px;color:var(--text-dim)}
+#login details[open] summary{margin-bottom:16px}
+#login details .btn{margin-top:16px}
 
 @media (max-width:560px){
   .intro h1{font-size:42px}
@@ -147,10 +150,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
         <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>
         Continue with Google
       </button>
-      <div class="divider">Or use email &amp; password</div>
+      <div class="divider">Or use email</div>
       <label class="field">Email<input id="email" type="email" autocomplete="username" placeholder="you@studio.com"></label>
-      <label class="field">Password<input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
-      <button id="password-login" type="button" class="btn btn-primary btn-block">Sign in</button>
+      <button id="send-code" type="button" class="btn btn-secondary btn-block">Send verification code</button>
+      <label class="field">Verification code<input id="email-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Enter your code"></label>
+      <button id="code-login" type="button" class="btn btn-primary btn-block">Sign in with code</button>
+      <details style="margin-top:18px">
+        <summary>Use a password instead</summary>
+        <label class="field">Password<input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+        <button id="password-login" type="button" class="btn btn-secondary btn-block">Sign in with password</button>
+      </details>
     </section>
 
     <!-- Signed in -->
