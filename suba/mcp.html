@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SubA MCP server for subtitle localization | entendu.</title>
+<meta name="description" content="Learn how the SubA remote MCP service supports subtitle localization with project rules, glossaries, review and export.">
+<link rel="canonical" href="https://entendu.studio/suba/mcp.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./suba.css">
+</head>
+<body>
+<div class="layout-001">
+<div class="layout-002">
+
+<header class="layout-003">
+<a href="./" class="layout-004">SubA <span class="layout-005">by entendu.</span></a>
+<nav aria-label="Page navigation" class="layout-006">
+<a href="getting-started.html" class="layout-007">Getting started</a>
+<a href="./style-guide-and-glossary.html" class="layout-007">Guide</a>
+<a href="./mcp.html" aria-current="page" class="layout-056">MCP</a>
+<a href="https://entendu.studio/support/suba-privacy.html" class="layout-007">Privacy</a>
+</nav>
+</header>
+<main>
+
+<section class="layout-102">
+<div class="layout-009">
+<span>Model Context Protocol</span>
+<span>Remote service</span>
+</div>
+<h1 class="layout-103">SubA MCP server for subtitle <em class="layout-059">localization</em></h1>
+<p class="layout-080">SubA provides a remote Model Context Protocol (MCP) service for subtitle translation, rule validation, checking, cue-level revision and original-format export. It is intended for subtitle files and professional localization workflows.</p>
+</section>
+
+<section aria-labelledby="connect" class="layout-104">
+<div class="layout-105">
+<h2 id="connect" class="layout-106">Connect to the service</h2>
+<span>Streamable HTTP · OAuth</span>
+</div>
+<p class="layout-107">The public SubA plugin uses Streamable HTTP and connects to:</p>
+<p class="layout-108"><code class="layout-109">https://<span class="layout-110">mcp.entendu.studio</span>/v1</code></p>
+<p class="layout-111">The plugin uses an entendu. account and OAuth authorization through the host. A client must support the service's authentication flow. Host support and setup can vary: use the <a href="https://chatgpt.com/plugins/plugin_asdk_app_6adf8e30d05c8191a17e071804d36f87?open_in_app" class="layout-112">published SubA plugin</a> or contact <a href="mailto:support@entendu.studio" class="layout-112">support@entendu.studio</a> for current setup options. Do not paste access tokens or credentials into chat.</p>
+</section>
+
+<section class="layout-113">
+<div class="layout-082">Capabilities</div>
+<div class="layout-114">
+<h2 class="layout-115">What the workflow supports</h2>
+<ul class="layout-061">
+<li class="layout-116"><span class="layout-117">1</span><span>Load supported SRT, VTT, TTAL, TTML, PXTT and DFXP subtitle files, subject to format and structure limits.</span></li>
+<li class="layout-118"><span class="layout-117">2</span><span>Use project rules and glossaries, review an estimate and authorize translation before starting.</span></li>
+<li class="layout-118"><span class="layout-117">3</span><span>Inspect a completed job, review and revise individual cues, and export the result in the original format.</span></li>
+<li class="layout-119"><span class="layout-117">4</span><span>When checks report unresolved issues, preserve completed work as a clearly labelled review draft with the actual issues.</span></li>
+</ul>
+<p class="layout-120">Check the returned status and issues; a review draft is not a passed delivery. A qualified person must review the result and any required audiovisual checks before final delivery.</p>
+</div>
+</section>
+
+<section class="layout-121">
+<div class="layout-082">Terms</div>
+<div class="layout-114">
+<h2 class="layout-122">Usage and data</h2>
+<p class="layout-036">SubA service usage is separate from your AI host's conversation or review allowance. Check language availability and the actual account estimate before adding funds or starting paid work. Jobs are normally available for seven days; export results before expiry. Account, glossary and billing records have separate retention. Only process content you are authorized to use.</p>
+<p class="layout-123"><a href="getting-started.html" data-arrow="true">Read the getting-started guide</a><a href="https://entendu.studio/support/suba-privacy.html">Privacy policy</a><a href="https://entendu.studio/support/suba-terms.html">Terms</a></p>
+</div>
+</section>
+
+</main>
+<footer class="layout-124">
+<p class="layout-053">SubA is provided by Vertex Pixels Media LLC. <span class="layout-078">Last updated: November 7, 2026.</span></p>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
